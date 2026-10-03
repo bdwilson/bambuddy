@@ -409,6 +409,14 @@ export function useWebSocket() {
         debouncedInvalidate('announcements');
         break;
 
+      case 'printer_locations_changed':
+        // A location was created, renamed, restyled or deleted, or printers moved
+        // between them (#2962). Every page that shows a printer's location reads
+        // it from the printer list.
+        debouncedInvalidate('printer-locations');
+        debouncedInvalidate('printers');
+        break;
+
       case 'inventory_changed':
         // Spool created/updated/deleted/archived/restored - refresh inventory across all tabs
         debouncedInvalidate('inventory-spools');

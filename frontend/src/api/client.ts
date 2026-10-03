@@ -413,6 +413,23 @@ export interface OverlayStatus {
 }
 
 // Printer types
+// Printer locations (groups) and their appearance (#2962). `id` is null for a
+// location only printers carry, with no row of its own yet.
+export interface PrinterLocation {
+  id: number | null;
+  name: string;
+  icon: string | null;
+  color: string | null;
+  printer_count: number;
+}
+
+export interface PrinterLocationUpdate {
+  name: string;
+  new_name?: string;
+  icon?: string | null;
+  color?: string | null;
+}
+
 export interface Printer {
   id: number;
   name: string;
@@ -4906,6 +4923,21 @@ export const api = {
     if (location) params.set('location', location);
     return request<Array<{ type: string; color: string; tray_info_idx: string; tray_sub_brands: string; extruder_id: number | null }>>(`/printers/available-filaments?${params}`);
   },
+  getPrinterLocations: () => request<PrinterLocation[]>('/printer-locations/'),
+  createPrinterLocation: (data: { name: string; icon?: string | null; color?: string | null }) =>
+    request<PrinterLocation>('/printer-locations/', { method: 'POST', body: JSON.stringify(data) }),
+  updatePrinterLocation: (data: PrinterLocationUpdate) =>
+    request<PrinterLocation>('/printer-locations/', { method: 'PATCH', body: JSON.stringify(data) }),
+  deletePrinterLocations: (names: string[]) =>
+    request<{ deleted: number; printers_ungrouped: number }>('/printer-locations/delete', {
+      method: 'POST',
+      body: JSON.stringify({ names }),
+    }),
+  assignPrinterLocation: (printerIds: number[], location: string | null) =>
+    request<{ moved: number }>('/printer-locations/assign', {
+      method: 'POST',
+      body: JSON.stringify({ printer_ids: printerIds, location }),
+    }),
   getPrinterStatus: (id: number) =>
     request<PrinterStatus>(`/printers/${id}/status`),
   refreshPrinterStatus: (id: number) =>

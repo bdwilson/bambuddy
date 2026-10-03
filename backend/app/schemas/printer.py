@@ -2,6 +2,7 @@ from datetime import datetime
 
 from pydantic import BaseModel, Field, field_validator, model_validator
 
+from backend.app.schemas.printer_location import normalize_location_name
 from backend.app.utils.printer_models import supports_nozzle_flow_type
 
 
@@ -47,6 +48,10 @@ class PrinterCreate(PrinterBase):
     # connect to the printer's MQTT and bypass Bambuddy's RBAC.
     access_code: str = Field(..., min_length=1, max_length=20)
 
+    # Input only, not on PrinterBase: SQLite never enforced the column width,
+    # so a stored location may be longer, and the response must still read it.
+    _location = field_validator("location")(normalize_location_name)
+
 
 class PlateDetectionROI(BaseModel):
     """Region of interest for plate detection (percentages 0.0-1.0)."""
@@ -67,6 +72,7 @@ class PrinterUpdate(BaseModel):
     access_code: str | None = None
     model: str | None = None
     location: str | None = None
+    _location = field_validator("location")(normalize_location_name)
     is_active: bool | None = None
     auto_archive: bool | None = None
     print_hours_offset: float | None = None

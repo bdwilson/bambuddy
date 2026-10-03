@@ -25,6 +25,7 @@ from backend.app.models.pipeline_run import PipelineJob, PipelineRun
 from backend.app.models.print_batch import PrintBatch, PrintBatchPlate
 from backend.app.models.printer import Printer
 from backend.app.models.printer_ha_sensor import PrinterHASensor
+from backend.app.models.printer_location import PrinterLocation
 from backend.app.models.printer_sensor_history import PrinterSensorHistory
 from backend.app.models.project import Project
 from backend.app.models.scheduled_drying import ScheduledDrying
@@ -48,6 +49,7 @@ from backend.app.models.user_totp import UserTOTP
 
 __all__ = [
     "Printer",
+    "PrinterLocation",
     "PrintArchive",
     "Filament",
     "Settings",

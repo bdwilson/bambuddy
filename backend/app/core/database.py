@@ -349,6 +349,7 @@ async def init_db():
         print_queue,
         printer,
         printer_ha_sensor,
+        printer_location,
         printer_sensor_history,
         project,
         project_bom,
@@ -5184,6 +5185,9 @@ async def run_migrations(conn):
     # Spoolman and the location sync then imported as storage locations.
     await _migrate_drop_ams_slot_locations(conn)
 
+    # Data migration: printer locations as the locations API stores them (#2962).
+    await _migrate_normalize_printer_locations(conn)
+
     # Migration: link a batch to the external record that asked for it (a shop
     # order an integration turned into prints). The unique index is what makes
     # a retried create safe; both columns are new, so no row can violate it.
@@ -5529,6 +5533,31 @@ async def _migrate_location_ha_sensor_unique_binding(conn) -> None:
         "CREATE UNIQUE INDEX IF NOT EXISTS uq_location_ha_sensors_location_entity "
         "ON location_ha_sensors (location_id, entity_id)",
     )
+
+
+async def _migrate_normalize_printer_locations(conn) -> None:
+    """Trim printer locations and store a blank one as NULL (#2962).
+
+    Nothing trimmed ``printers.location`` before, so "Workshop " and "Workshop"
+    could both be stored, and "" sat next to NULL for "no location". The
+    Printer Locations API trims every name it is given, so an untrimmed stored
+    value could never be matched to rename or delete it. Queue items'
+    ``target_location`` is trimmed the same way, so model-based jobs keep
+    matching their printers exactly. Idempotent: only rows that change are
+    touched.
+    """
+    from sqlalchemy import text
+
+    async with conn.begin_nested():
+        for table, column in (("printers", "location"), ("print_queue", "target_location")):
+            await conn.execute(
+                text(f"UPDATE {table} SET {column} = NULL WHERE {column} IS NOT NULL AND TRIM({column}) = ''")  # noqa: S608  # nosec B608 — fixed identifiers
+            )
+            await conn.execute(
+                text(
+                    f"UPDATE {table} SET {column} = TRIM({column}) WHERE {column} IS NOT NULL AND {column} <> TRIM({column})"
+                )  # noqa: S608  # nosec B608 — fixed identifiers
+            )
 
 
 async def _migrate_drop_ams_slot_locations(conn) -> None:
