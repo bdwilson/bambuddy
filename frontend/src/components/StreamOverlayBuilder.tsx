@@ -13,6 +13,8 @@ import { useTranslation } from 'react-i18next';
 import { Copy, ExternalLink, Eye, EyeOff } from 'lucide-react';
 import { api, type Printer } from '../api/client';
 import { useToast } from '../contexts/ToastContext';
+import { OverlayBrandingControls } from './OverlayBrandingControls';
+import { DEFAULT_BRANDING } from '../utils/overlayBranding';
 import { NumberInput } from './NumberInput';
 
 type OverlaySize = 'small' | 'medium' | 'large';
@@ -50,8 +52,10 @@ export function StreamOverlayBuilder() {
   // '1' is the original overlay; the renderer is picked by version, not by a
   // name like "updated" that stops being true once there's a newer one.
   const [artwork, setArtwork] = useState<'1' | '2'>('1');
+  const [backgroundTransparency, setBackgroundTransparency] = useState(0);
   const [showCamera, setShowCamera] = useState(true);
   const [token, setToken] = useState('');
+  const [branding, setBranding] = useState(DEFAULT_BRANDING);
   const [preview, setPreview] = useState(false);
 
   useEffect(() => {
@@ -84,10 +88,18 @@ export function StreamOverlayBuilder() {
     if (size !== 'medium') params.set('size', size);
     if (fps !== DEFAULT_FPS) params.set('fps', String(fps));
     if (artwork !== '1') params.set('artwork', artwork);
+    if (artwork === '2' && backgroundTransparency > 0) {
+      params.set('backgroundTransparency', String(backgroundTransparency));
+    }
     if (!showCamera) params.set('camera', 'false');
+    if (branding.logo) params.set('logo', '1');
+    if (branding.from && branding.to) {
+      params.set('progressFrom', branding.from);
+      params.set('progressTo', branding.to);
+    }
     if (token.trim()) params.set('token', token.trim());
     return `${window.location.origin}/overlay/${id}?${params.toString()}`;
-  }, [printerId, fields, size, fps, showCamera, token, artwork]);
+  }, [printerId, fields, size, fps, showCamera, token, artwork, branding, backgroundTransparency]);
 
   const toggleField = (key: string) => {
     setFields((prev) => (prev.includes(key) ? prev.filter((f) => f !== key) : [...prev, key]));
@@ -181,6 +193,27 @@ export function StreamOverlayBuilder() {
           </select>
         </div>
 
+        {artwork === '2' && (
+          <div>
+            <label htmlFor="overlay-builder-background-transparency" className="flex justify-between gap-2 text-sm font-medium text-white mb-1">
+              <span>{t('streamOverlay.builder.backgroundTransparency')}</span>
+              <span aria-hidden="true">{backgroundTransparency}%</span>
+            </label>
+            <input
+              id="overlay-builder-background-transparency"
+              type="range"
+              min={0}
+              max={100}
+              step={1}
+              value={backgroundTransparency}
+              aria-valuetext={`${backgroundTransparency}%`}
+              onChange={(event) => setBackgroundTransparency(Number(event.target.value))}
+              className="w-full accent-bambu-green"
+            />
+            <p className="text-xs text-bambu-gray mt-1">{t('streamOverlay.builder.backgroundTransparencyHint')}</p>
+          </div>
+        )}
+
         <div>
           <label htmlFor="overlay-builder-fps" className="block text-sm font-medium text-white mb-1">
             {t('streamOverlay.builder.fps', 'Frame rate')}
@@ -257,6 +290,8 @@ export function StreamOverlayBuilder() {
         </p>
       </fieldset>
 
+      <OverlayBrandingControls value={branding} onChange={setBranding} />
+
       <div className="mt-4">
         <p className="text-sm font-medium text-white mb-1">
           {t('streamOverlay.builder.urlTitle', 'Overlay URL')}
@@ -309,14 +344,31 @@ export function StreamOverlayBuilder() {
             : t('streamOverlay.builder.showPreview', 'Show preview')}
         </button>
         {preview && (
-          <iframe
-            key={url}
-            src={url}
+          <OverlayPreview
+            url={url}
+            logoRevision={branding.logoRevision}
             title={t('streamOverlay.builder.previewTitle', 'Overlay preview')}
-            className="mt-3 w-full aspect-video rounded-md border border-bambu-dark-tertiary bg-black"
           />
         )}
       </div>
     </div>
   );
+}
+
+function OverlayPreview({ url, logoRevision, title }: { url: string; logoRevision: number; title: string }) {
+  const [source, setSource] = useState({ url, logoRevision });
+
+  useEffect(() => {
+    // Colour and transparency controls emit continuously while dragging.
+    // Wait for them to settle before opening another camera stream.
+    const timeout = window.setTimeout(() => setSource({ url, logoRevision }), 300);
+    return () => window.clearTimeout(timeout);
+  }, [url, logoRevision]);
+
+  return <iframe
+    key={`${source.url}:${source.logoRevision}`}
+    src={source.url}
+    title={title}
+    className="mt-3 w-full aspect-video rounded-md border border-bambu-dark-tertiary bg-black"
+  />;
 }

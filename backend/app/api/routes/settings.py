@@ -827,6 +827,7 @@ async def create_backup_zip(output_path: Path | None = None) -> tuple[Path, str]
             ("plate_calibration", app_settings.plate_calibration_dir),
             ("icons", base_dir / "icons"),
             ("projects", base_dir / "projects"),
+            ("overlay-branding", base_dir / "overlay-branding"),
         ]
 
         for name, src_dir in dirs_to_backup:
@@ -1515,6 +1516,7 @@ async def restore_backup(
                 ("plate_calibration", app_settings.plate_calibration_dir),
                 ("icons", base_dir / "icons"),
                 ("projects", base_dir / "projects"),
+                ("overlay-branding", base_dir / "overlay-branding"),
             ]
 
             skipped_dirs = []

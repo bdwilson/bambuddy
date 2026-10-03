@@ -3597,6 +3597,16 @@ export default {
 
   // Stream overlay
   streamOverlay: {
+    branding: {
+      title: '品牌設定',
+      hint: '此安裝共用一個標誌。支援 PNG 或 WebP，最大 2 MiB 和 400 萬像素。替換或刪除會影響使用該標誌的覆蓋層。',
+      upload: '上傳標誌',
+      logo: '自訂標誌',
+      from: '起始顏色',
+      to: '結束顏色',
+      reset: '重設顏色',
+      failed: '無法儲存標誌。請檢查圖片格式和大小。',
+    },
     title: '流疊加層',
     invalidPrinterId: '無效的印表機 ID',
     cameraStream: '攝影機流',
@@ -3607,6 +3617,8 @@ export default {
     layer: '層數',
     remaining: '剩餘時間',
     builder: {
+      backgroundTransparency: '背景透明度',
+      backgroundTransparencyHint: '僅淡化深色背景。文字、標誌和攝影機畫面保持可見。',
       artwork: '外觀',
       artworkClassic: '經典',
       artworkV2: '第 2 版',

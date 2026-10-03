@@ -3597,6 +3597,16 @@ export default {
 
   // Stream overlay
   streamOverlay: {
+    branding: {
+      title: 'Identità visiva',
+      hint: 'Un logo condiviso per questa installazione. PNG o WebP, fino a 2 MiB e 4 milioni di pixel. Sostituirlo o rimuoverlo influisce sulle sovrapposizioni che lo usano.',
+      upload: 'Carica logo',
+      logo: 'Logo personalizzato',
+      from: 'Colore iniziale',
+      to: 'Colore finale',
+      reset: 'Ripristina colori',
+      failed: 'Impossibile salvare il logo. Controlla formato e dimensioni.',
+    },
     title: 'Overlay stream',
     invalidPrinterId: 'ID stampante non valido',
     cameraStream: 'Stream camera',
@@ -3607,6 +3617,8 @@ export default {
     layer: 'Strato',
     remaining: 'Tempo rimanente',
     builder: {
+      backgroundTransparency: 'Trasparenza dello sfondo',
+      backgroundTransparencyHint: 'Sfuma solo gli sfondi scuri. Testo, loghi e videocamera restano visibili.',
       artwork: 'Grafica',
       artworkClassic: 'Classica',
       artworkV2: 'Versione 2',

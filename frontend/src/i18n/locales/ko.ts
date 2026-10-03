@@ -3433,6 +3433,16 @@ export default {
     }
   },
   streamOverlay: {
+    branding: {
+      title: '브랜딩 설정',
+      hint: '이 설치에서 공유하는 로고입니다. PNG 또는 WebP, 최대 2 MiB 및 400만 픽셀. 교체하거나 삭제하면 사용 중인 오버레이에 영향을 줍니다.',
+      upload: '로고 업로드',
+      logo: '사용자 지정 로고',
+      from: '시작 색상',
+      to: '끝 색상',
+      reset: '색상 초기화',
+      failed: '로고를 저장하지 못했습니다. 이미지 형식과 크기를 확인하세요.',
+    },
     title: '스트림 오버레이',
     invalidPrinterId: '유효하지 않은 프린터 ID',
     cameraStream: '카메라 스트림',
@@ -3443,6 +3453,8 @@ export default {
     layer: '레이어',
     remaining: '남은 시간',
     builder: {
+      backgroundTransparency: '배경 투명도',
+      backgroundTransparencyHint: '어두운 배경만 흐리게 합니다. 텍스트, 로고와 카메라 영상은 그대로 표시됩니다.',
       artwork: '디자인',
       artworkClassic: '클래식',
       artworkV2: '버전 2',

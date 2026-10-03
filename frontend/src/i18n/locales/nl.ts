@@ -3640,6 +3640,16 @@ export default {
 
   // Stream overlay
   streamOverlay: {
+    branding: {
+      title: 'Huisstijl',
+      hint: 'Eén gedeeld logo voor deze installatie. PNG of WebP, maximaal 2 MiB en 4 miljoen pixels. Vervangen of verwijderen heeft invloed op overlays die het gebruiken.',
+      upload: 'Logo uploaden',
+      logo: 'Eigen logo',
+      from: 'Beginkleur',
+      to: 'Eindkleur',
+      reset: 'Kleuren herstellen',
+      failed: 'Kan het logo niet opslaan. Controleer het formaat en de grootte.',
+    },
     title: 'Streamoverlay',
     invalidPrinterId: 'Ongeldige printer-ID',
     cameraStream: 'Camerastream',
@@ -3650,6 +3660,8 @@ export default {
     layer: 'Laag',
     remaining: 'Resterend',
     builder: {
+      backgroundTransparency: 'Achtergrondtransparantie',
+      backgroundTransparencyHint: 'Vervaag alleen de donkere achtergronden. Tekst, logo’s en camera blijven zichtbaar.',
       artwork: 'Vormgeving',
       artworkClassic: 'Klassiek',
       artworkV2: 'Versie 2',

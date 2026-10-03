@@ -3,6 +3,8 @@ import { useParams, useSearchParams } from 'react-router-dom';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
 import { Layers, Clock, Timer, Printer, Flame, Square, Box } from 'lucide-react';
+import { useOverlayLogo } from '../hooks/useOverlayLogo';
+import { overlayGradient, overlayProgressTextStyle } from '../utils/overlayBranding';
 import { UpdatedStreamOverlay } from '../components/UpdatedStreamOverlay';
 import { api, ApiError, withStreamToken } from '../api/client';
 import { formatDuration, formatETA, type TimeFormat } from '../utils/date';
@@ -16,6 +18,7 @@ type OverlaySize = 'small' | 'medium' | 'large';
 interface OverlayConfig {
   size: OverlaySize;
   updatedArtwork: boolean;
+  backgroundTransparency: number;
   fps: number;
   showCamera: boolean;
   showProgress: boolean;
@@ -54,7 +57,13 @@ function parseConfig(params: URLSearchParams): OverlayConfig {
   const cameraParam = params.get('camera');
   const showCamera = cameraParam !== 'false' && cameraParam !== '0';
 
+  const transparencyParam = Number(params.get('backgroundTransparency'));
+  const backgroundTransparency = Number.isFinite(transparencyParam)
+    ? Math.min(100, Math.max(0, transparencyParam))
+    : 0;
+
   return {
+    backgroundTransparency,
     size: (params.get('size') as OverlaySize) || 'medium',
     fps,
     updatedArtwork: params.get('artwork') === '2',
@@ -178,6 +187,16 @@ export function StreamOverlayPage() {
   // (status + camera stream) is authenticated by that token instead of a JWT.
   const token = searchParams.get('token');
   const kiosk = token != null && token !== '';
+  const logo = useOverlayLogo(searchParams.get('logo') === '1', token);
+  const progressBackground = overlayGradient(searchParams.get('progressFrom'), searchParams.get('progressTo'));
+  const progressTextStyle = overlayProgressTextStyle(progressBackground);
+  const customLogo = logo ? (
+    <img
+      src={logo}
+      alt={t('streamOverlay.branding.logo')}
+      className="mb-2 max-h-[14vh] max-w-[20vw] object-contain"
+    />
+  ) : null;
 
   // Kiosk path: one token-authenticated call for name + live status + the one
   // setting the overlay reads. No JWT, so this is the only feed available.
@@ -382,6 +401,9 @@ export function StreamOverlayPage() {
     const remainingTime = status.remaining_time;
     const hasRemaining = active && config.showEta && remainingTime != null && remainingTime > 0;
     return <UpdatedStreamOverlay
+      backgroundTransparency={config.backgroundTransparency}
+      customLogo={customLogo}
+      progressBackground={progressBackground}
       size={config.size}
       camera={config.showCamera ? { url: streamUrl, rotation: printer?.camera_rotation ?? 0, onError: handleStreamError } : null}
       name={config.showPrinter ? printer?.name ?? null : null}
@@ -411,19 +433,21 @@ export function StreamOverlayPage() {
         />
       )}
 
-      {/* Bambuddy logo - top right */}
-      <a
-        href="https://github.com/maziggy/bambuddy"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="absolute top-4 right-4 z-10"
-      >
-        <img
-          src="/img/bambuddy_logo_dark_transparent.png"
-          alt="Bambuddy"
-          className={`${sizes.logoHeight} object-contain drop-shadow-lg hover:scale-105 transition-transform`}
-        />
-      </a>
+      {/* Channel branding above the Bambuddy mark. */}
+      <div className="absolute top-4 right-4 z-10 flex flex-col items-end">
+        {customLogo}
+        <a
+          href="https://github.com/maziggy/bambuddy"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="/img/bambuddy_logo_dark_transparent.png"
+            alt="Bambuddy"
+            className={`${sizes.logoHeight} object-contain drop-shadow-lg hover:scale-105 transition-transform`}
+          />
+        </a>
+      </div>
 
       {/* Status overlay - bottom */}
       <div className="absolute bottom-0 left-0 right-0 z-10 bg-gradient-to-t from-black/80 via-black/60 to-transparent">
@@ -454,13 +478,13 @@ export function StreamOverlayPage() {
           {config.showProgress && isPrinting && (
             <div className="mb-3">
               <div className={`flex items-center justify-between mb-1 ${sizes.text}`}>
-                <span className="text-white/70">{t('streamOverlay.progress')}</span>
-                <span className="text-white font-bold">{Math.round(progress)}%</span>
+                <span className="text-white/70" style={progressTextStyle}>{t('streamOverlay.progress')}</span>
+                <span className="text-white font-bold" style={progressTextStyle}>{Math.round(progress)}%</span>
               </div>
               <div className={`w-full bg-white/20 rounded-full ${sizes.progressHeight}`}>
                 <div
                   className={`bg-bambu-green ${sizes.progressHeight} rounded-full transition-all duration-500`}
-                  style={{ width: `${progress}%` }}
+                  style={{ width: `${progress}%`, background: progressBackground }}
                 />
               </div>
             </div>

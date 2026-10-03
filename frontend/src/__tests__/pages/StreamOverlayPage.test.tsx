@@ -106,6 +106,46 @@ describe('StreamOverlayPage', () => {
     vi.unstubAllGlobals();
   });
 
+  it.each(['1', '2'])('uses the requested gradient in artwork %s', async (artwork) => {
+    server.use(http.get('/api/v1/printers/:id/status', () => HttpResponse.json(mockStatusPrinting)));
+    const { container } = renderOverlayPage(1, `?artwork=${artwork}&progressFrom=%23ff0000&progressTo=%230000ff`);
+    await screen.findByAltText('Bambuddy');
+    const bar = container.querySelector('[style*="width: 45%"]');
+    expect(bar).toHaveStyle({ width: '45%', background: 'linear-gradient(to right, #ff0000, #0000ff)' });
+    for (const text of [screen.getByText('Progress'), screen.getByText('45%')]) {
+      expect(text).toHaveStyle({
+        'background-image': 'linear-gradient(to right, #ff0000, #0000ff)',
+        'background-clip': 'text',
+        color: 'rgba(0, 0, 0, 0)',
+      });
+    }
+  });
+
+  it.each(['1', '2'])('ignores malformed branding colours in artwork %s', async (artwork) => {
+    server.use(http.get('/api/v1/printers/:id/status', () => HttpResponse.json(mockStatusPrinting)));
+    const { container } = renderOverlayPage(1, `?artwork=${artwork}&progressFrom=red&progressTo=%230000ff`);
+    await screen.findByAltText('Bambuddy');
+    expect(container.querySelector('[style*="linear-gradient"]')).toBeNull();
+  });
+
+  it.each([
+    ['0', '1'], ['50', '0.5'], ['100', '0'], ['-10', '1'], ['150', '0'], ['invalid', '1'], ['', '1'],
+  ])('validates Version 2 background transparency %s', async (value, alpha) => {
+    const { container, unmount } = renderOverlayPage(1, `?artwork=2&camera=false&backgroundTransparency=${value}`);
+    await screen.findByAltText('Bambuddy');
+    expect(container.querySelector('.updated-overlay')).toHaveStyle({ '--overlay-background-alpha': alpha });
+    if (alpha !== '1') expect(document.body.style.backgroundColor).toBe('transparent');
+    unmount();
+    expect(document.body.style.backgroundColor).not.toBe('transparent');
+  });
+
+  it('ignores background transparency in Classic', async () => {
+    const { container } = renderOverlayPage(1, '?backgroundTransparency=100');
+    await screen.findByAltText('Bambuddy');
+    expect(container.querySelector('[style*="--overlay-background-alpha"]')).toBeNull();
+    expect(document.body.style.backgroundColor).not.toBe('transparent');
+  });
+
   it.each(['', '&artwork=2'])('reconnects the kiosk camera without changing its token or settings (%s)', async (artwork) => {
     server.use(http.get('/api/v1/printers/:id/overlay-status', () => HttpResponse.json({
       ...mockStatusIdle, camera_rotation: 90,

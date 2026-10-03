@@ -3612,6 +3612,16 @@ export default {
 
   // Akış bindirmesi
   streamOverlay: {
+    branding: {
+      title: 'Marka görünümü',
+      hint: 'Bu kurulum için paylaşılan bir logo. PNG veya WebP, en fazla 2 MiB ve 4 milyon piksel. Değiştirmek veya kaldırmak, kullanan katmanları etkiler.',
+      upload: 'Logo yükle',
+      logo: 'Özel logo',
+      from: 'Başlangıç rengi',
+      to: 'Bitiş rengi',
+      reset: 'Renkleri sıfırla',
+      failed: 'Logo kaydedilemedi. Görüntü biçimini ve boyutunu kontrol edin.',
+    },
     title: 'Akış Bindirmesi',
     invalidPrinterId: 'Geçersiz yazıcı ID\'si',
     cameraStream: 'Kamera akışı',
@@ -3622,6 +3632,8 @@ export default {
     layer: 'Katman',
     remaining: 'Kalan süre',
     builder: {
+      backgroundTransparency: 'Arka plan saydamlığı',
+      backgroundTransparencyHint: 'Yalnızca koyu arka planları soldurur. Metin, logolar ve kamera görünür kalır.',
       artwork: 'Tasarım',
       artworkClassic: 'Klasik',
       artworkV2: 'Sürüm 2',
