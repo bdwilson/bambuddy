@@ -2,6 +2,17 @@
 
 All notable changes to Bambuddy will be documented in this file.
 
+## [1.2.5.8] - Unreleased
+
+### Added
+
+### Changed
+
+### Fixed
+
+### Security
+
+
 ## [1.2.5.7] - 2026-10-02
 
 ### Added
