@@ -3619,6 +3619,13 @@ export default {
     builder: {
       backgroundTransparency: '背景透明度',
       backgroundTransparencyHint: '僅淡化深色背景。文字、標誌和攝影機畫面保持可見。',
+      layout: '版面配置',
+      landscape: '橫向',
+      portrait: '直向',
+      both: '兩者',
+      orientationUrl: '{{orientation}}連結',
+      orientationPreview: '{{orientation}}預覽',
+      sourceDimensions: '瀏覽器來源：{{width}} × {{height}} 像素',
       artwork: '外觀',
       artworkClassic: '經典',
       artworkV2: '第 2 版',

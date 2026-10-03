@@ -3632,6 +3632,13 @@ export default {
     builder: {
       backgroundTransparency: '背景の透明度',
       backgroundTransparencyHint: '暗い背景のみを薄くします。テキスト、ロゴ、カメラ映像はそのまま表示されます。',
+      layout: 'レイアウト',
+      landscape: '横向き',
+      portrait: '縦向き',
+      both: '両方',
+      orientationUrl: '{{orientation}}のURL',
+      orientationPreview: '{{orientation}}のプレビュー',
+      sourceDimensions: 'ブラウザソース: {{width}} × {{height}} ピクセル',
       artwork: 'デザイン',
       artworkClassic: 'クラシック',
       artworkV2: 'バージョン 2',

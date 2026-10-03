@@ -3661,6 +3661,13 @@ errors: {
     builder: {
       backgroundTransparency: 'Bakgrundens genomskinlighet',
       backgroundTransparencyHint: 'Tona bara ned de mörka bakgrunderna. Text, logotyper och kamerabild förblir synliga.',
+      layout: 'Utformning',
+      landscape: 'Liggande',
+      portrait: 'Stående',
+      both: 'Båda',
+      orientationUrl: 'URL för {{orientation}}',
+      orientationPreview: 'Förhandsvisning: {{orientation}}',
+      sourceDimensions: 'Webbläsarkälla: {{width}} × {{height}} px',
       artwork: 'Utseende',
       artworkClassic: 'Klassisk',
       artworkV2: 'Version 2',

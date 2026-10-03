@@ -3619,6 +3619,13 @@ export default {
     builder: {
       backgroundTransparency: 'Transparência do fundo',
       backgroundTransparencyHint: 'Atenua apenas os fundos escuros. Texto, logotipos e câmera continuam visíveis.',
+      layout: 'Disposição',
+      landscape: 'Paisagem',
+      portrait: 'Retrato',
+      both: 'Ambos',
+      orientationUrl: 'URL em {{orientation}}',
+      orientationPreview: 'Prévia em {{orientation}}',
+      sourceDimensions: 'Fonte do navegador: {{width}} × {{height}} px',
       artwork: 'Visual',
       artworkClassic: 'Clássico',
       artworkV2: 'Versão 2',

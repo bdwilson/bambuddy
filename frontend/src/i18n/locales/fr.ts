@@ -3620,6 +3620,13 @@ export default {
     builder: {
       backgroundTransparency: 'Transparence du fond',
       backgroundTransparencyHint: 'Estompe uniquement les fonds sombres. Le texte, les logos et la caméra restent visibles.',
+      layout: 'Disposition',
+      landscape: 'Paysage',
+      portrait: 'Format portrait',
+      both: 'Les deux',
+      orientationUrl: 'URL {{orientation}}',
+      orientationPreview: 'Aperçu {{orientation}}',
+      sourceDimensions: 'Source navigateur : {{width}} × {{height}} px',
       artwork: 'Habillage',
       artworkClassic: 'Classique',
       artworkV2: 'Version 2',

@@ -3455,6 +3455,13 @@ export default {
     builder: {
       backgroundTransparency: '배경 투명도',
       backgroundTransparencyHint: '어두운 배경만 흐리게 합니다. 텍스트, 로고와 카메라 영상은 그대로 표시됩니다.',
+      layout: '레이아웃',
+      landscape: '가로',
+      portrait: '세로',
+      both: '둘 다',
+      orientationUrl: '{{orientation}} URL 주소',
+      orientationPreview: '{{orientation}} 미리보기',
+      sourceDimensions: '브라우저 소스: {{width}} × {{height}} 픽셀',
       artwork: '디자인',
       artworkClassic: '클래식',
       artworkV2: '버전 2',

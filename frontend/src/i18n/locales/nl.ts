@@ -3662,6 +3662,13 @@ export default {
     builder: {
       backgroundTransparency: 'Achtergrondtransparantie',
       backgroundTransparencyHint: 'Vervaag alleen de donkere achtergronden. Tekst, logo’s en camera blijven zichtbaar.',
+      layout: 'Indeling',
+      landscape: 'Liggend',
+      portrait: 'Staand',
+      both: 'Beide',
+      orientationUrl: 'URL voor {{orientation}}',
+      orientationPreview: 'Voorbeeld: {{orientation}}',
+      sourceDimensions: 'Browserbron: {{width}} × {{height}} px',
       artwork: 'Vormgeving',
       artworkClassic: 'Klassiek',
       artworkV2: 'Versie 2',

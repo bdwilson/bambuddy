@@ -3447,6 +3447,13 @@ export default {
     builder: {
       backgroundTransparency: "Прозрачность фона",
       backgroundTransparencyHint: "Изменяет только тёмный фон. Текст, логотипы и изображение камеры остаются видимыми.",
+      layout: 'Макет',
+      landscape: 'Альбомный',
+      portrait: 'Портретный',
+      both: 'Оба',
+      orientationUrl: 'URL: {{orientation}}',
+      orientationPreview: 'Предпросмотр: {{orientation}}',
+      sourceDimensions: 'Источник браузера: {{width}} × {{height}} пикс.',
       artwork: 'Оформление',
       artworkClassic: 'Классическое',
       artworkV2: 'Версия 2',

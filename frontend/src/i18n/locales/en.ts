@@ -3662,6 +3662,13 @@ export default {
     builder: {
       backgroundTransparency: 'Background transparency',
       backgroundTransparencyHint: 'Fade the dark backgrounds only. Text, logos and camera stay visible.',
+      layout: 'Layout',
+      landscape: 'Landscape',
+      portrait: 'Portrait',
+      both: 'Both',
+      orientationUrl: '{{orientation}} URL',
+      orientationPreview: '{{orientation}} preview',
+      sourceDimensions: 'Browser source: {{width}} × {{height}} px',
       artwork: 'Artwork',
       artworkClassic: 'Classic',
       artworkV2: 'Version 2',

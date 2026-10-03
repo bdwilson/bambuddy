@@ -16,6 +16,8 @@ import { useToast } from '../contexts/ToastContext';
 import { OverlayBrandingControls } from './OverlayBrandingControls';
 import { DEFAULT_BRANDING } from '../utils/overlayBranding';
 import { NumberInput } from './NumberInput';
+import { OverlayFrame } from './OverlayFrame';
+import { OVERLAY_DIMENSIONS, type OverlayLayout } from '../utils/overlayLayout';
 
 type OverlaySize = 'small' | 'medium' | 'large';
 
@@ -56,6 +58,7 @@ export function StreamOverlayBuilder() {
   const [showCamera, setShowCamera] = useState(true);
   const [token, setToken] = useState('');
   const [branding, setBranding] = useState(DEFAULT_BRANDING);
+  const [layout, setLayout] = useState<OverlayLayout | 'both'>('landscape');
   const [preview, setPreview] = useState(false);
 
   useEffect(() => {
@@ -78,7 +81,7 @@ export function StreamOverlayBuilder() {
     };
   }, []);
 
-  const url = useMemo(() => {
+  const outputs = useMemo(() => {
     const id = printerId ?? 1;
     const params = new URLSearchParams();
     // Emit ?show= in the canonical field order rather than click order, so the
@@ -98,14 +101,19 @@ export function StreamOverlayBuilder() {
       params.set('progressTo', branding.to);
     }
     if (token.trim()) params.set('token', token.trim());
-    return `${window.location.origin}/overlay/${id}?${params.toString()}`;
-  }, [printerId, fields, size, fps, showCamera, token, artwork, branding, backgroundTransparency]);
+    const layouts: OverlayLayout[] = layout === 'both' ? ['landscape', 'portrait'] : [layout];
+    return layouts.map((orientation) => {
+      if (orientation === 'portrait') params.set('layout', orientation);
+      else params.delete('layout');
+      return { layout: orientation, url: `${window.location.origin}/overlay/${id}?${params.toString()}` };
+    });
+  }, [printerId, fields, size, fps, showCamera, token, artwork, layout, branding, backgroundTransparency]);
 
   const toggleField = (key: string) => {
     setFields((prev) => (prev.includes(key) ? prev.filter((f) => f !== key) : [...prev, key]));
   };
 
-  const copyUrl = async () => {
+  const copyUrl = async (url: string) => {
     try {
       // Same fallback as the token dialog: the clipboard API needs a secure
       // context, and plenty of Bambuddy installs are plain HTTP on a LAN.
@@ -175,6 +183,22 @@ export function StreamOverlayBuilder() {
             <option value="small">{t('streamOverlay.builder.sizeSmall', 'Small')}</option>
             <option value="medium">{t('streamOverlay.builder.sizeMedium', 'Medium')}</option>
             <option value="large">{t('streamOverlay.builder.sizeLarge', 'Large')}</option>
+          </select>
+        </div>
+
+        <div>
+          <label htmlFor="overlay-builder-layout" className="block text-sm font-medium text-white mb-1">
+            {t('streamOverlay.builder.layout')}
+          </label>
+          <select id="overlay-builder-layout" value={layout}
+            onChange={(e) => {
+              const value = e.target.value;
+              if (value === 'landscape' || value === 'portrait' || value === 'both') setLayout(value);
+            }}
+            className="w-full px-3 py-2 bg-bambu-dark rounded-md text-white border border-bambu-dark-tertiary focus:border-bambu-green focus:outline-none">
+            <option value="landscape">{t('streamOverlay.builder.landscape')}</option>
+            <option value="portrait">{t('streamOverlay.builder.portrait')}</option>
+            <option value="both">{t('streamOverlay.builder.both')}</option>
           </select>
         </div>
 
@@ -293,31 +317,31 @@ export function StreamOverlayBuilder() {
       <OverlayBrandingControls value={branding} onChange={setBranding} />
 
       <div className="mt-4">
-        <p className="text-sm font-medium text-white mb-1">
-          {t('streamOverlay.builder.urlTitle', 'Overlay URL')}
-        </p>
-        <div className="flex items-center gap-2">
-          <code className="flex-1 px-3 py-2 bg-bambu-dark rounded-md text-bambu-green text-xs break-all font-mono select-all">
-            {url}
-          </code>
-          <button
-            type="button"
-            onClick={() => void copyUrl()}
-            className="flex items-center gap-2 px-3 py-2 bg-bambu-green text-white rounded-md hover:bg-bambu-green/90"
-          >
-            <Copy className="w-4 h-4" />
-            {t('cameraTokens.created.copy', 'Copy')}
-          </button>
-          <a
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-3 py-2 bg-bambu-dark-tertiary text-white rounded-md hover:bg-bambu-dark-tertiary/80"
-          >
-            <ExternalLink className="w-4 h-4" />
-            {t('streamOverlay.builder.open', 'Open')}
-          </a>
-        </div>
+        {outputs.map(({ layout: orientation, url }) => (
+          <fieldset key={orientation} className="min-w-0 mb-3">
+            <legend className="text-sm font-medium text-white mb-1">
+              {t('streamOverlay.builder.orientationUrl', { orientation: t(`streamOverlay.builder.${orientation}`) })}
+            </legend>
+            <p className="text-xs text-bambu-gray mb-2">
+              {t('streamOverlay.builder.sourceDimensions', OVERLAY_DIMENSIONS[orientation])}
+            </p>
+            <div className="flex flex-wrap items-center gap-2">
+              <code className="w-full px-3 py-2 bg-bambu-dark rounded-md text-bambu-green text-xs break-all font-mono select-all">
+                {url}
+              </code>
+              <button type="button" onClick={() => void copyUrl(url)}
+                className="flex items-center gap-2 px-3 py-2 bg-bambu-green text-white rounded-md hover:bg-bambu-green/90">
+                <Copy className="w-4 h-4" />
+                {t('cameraTokens.created.copy', 'Copy')}
+              </button>
+              <a href={url} target="_blank" rel="noopener noreferrer"
+                className="flex items-center gap-2 px-3 py-2 bg-bambu-dark-tertiary text-white rounded-md hover:bg-bambu-dark-tertiary/80">
+                <ExternalLink className="w-4 h-4" />
+                {t('streamOverlay.builder.open', 'Open')}
+              </a>
+            </div>
+          </fieldset>
+        ))}
         {token.trim() && (
           <p className="text-xs text-bambu-gray mt-2">
             {t(
@@ -344,11 +368,20 @@ export function StreamOverlayBuilder() {
             : t('streamOverlay.builder.showPreview', 'Show preview')}
         </button>
         {preview && (
-          <OverlayPreview
-            url={url}
-            logoRevision={branding.logoRevision}
-            title={t('streamOverlay.builder.previewTitle', 'Overlay preview')}
-          />
+          <div className="mt-3 flex flex-wrap items-start gap-4">
+            {outputs.map(({ layout: orientation, url }) => (
+              <div key={orientation} className="min-w-0 flex-1 basis-64"
+                style={orientation === 'portrait' ? { maxWidth: 360 } : undefined}>
+                <p className="text-sm text-white mb-2">{t(`streamOverlay.builder.${orientation}`)}</p>
+                <div className="overflow-hidden rounded-md border border-bambu-dark-tertiary">
+                  <OverlayFrame layout={orientation} preview>
+                    <OverlayPreview url={url} logoRevision={branding.logoRevision}
+                      title={t('streamOverlay.builder.orientationPreview', { orientation: t(`streamOverlay.builder.${orientation}`) })} />
+                  </OverlayFrame>
+                </div>
+              </div>
+            ))}
+          </div>
         )}
       </div>
     </div>
@@ -369,6 +402,6 @@ function OverlayPreview({ url, logoRevision, title }: { url: string; logoRevisio
     key={`${source.url}:${source.logoRevision}`}
     src={source.url}
     title={title}
-    className="mt-3 w-full aspect-video rounded-md border border-bambu-dark-tertiary bg-black"
+    className="w-full h-full border-0"
   />;
 }

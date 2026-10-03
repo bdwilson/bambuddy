@@ -3634,6 +3634,13 @@ export default {
     builder: {
       backgroundTransparency: 'Arka plan saydamlığı',
       backgroundTransparencyHint: 'Yalnızca koyu arka planları soldurur. Metin, logolar ve kamera görünür kalır.',
+      layout: 'Düzen',
+      landscape: 'Yatay',
+      portrait: 'Dikey',
+      both: 'Her ikisi',
+      orientationUrl: '{{orientation}} URL adresi',
+      orientationPreview: '{{orientation}} önizleme',
+      sourceDimensions: 'Tarayıcı kaynağı: {{width}} × {{height}} piksel',
       artwork: 'Tasarım',
       artworkClassic: 'Klasik',
       artworkV2: 'Sürüm 2',

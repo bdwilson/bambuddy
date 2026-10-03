@@ -3619,6 +3619,13 @@ export default {
     builder: {
       backgroundTransparency: '背景透明度',
       backgroundTransparencyHint: '仅淡化深色背景。文字、徽标和摄像头画面保持可见。',
+      layout: '布局',
+      landscape: '横屏',
+      portrait: '竖屏',
+      both: '两者',
+      orientationUrl: '{{orientation}}链接',
+      orientationPreview: '{{orientation}}预览',
+      sourceDimensions: '浏览器源：{{width}} × {{height}} 像素',
       artwork: '外观',
       artworkClassic: '经典',
       artworkV2: '第 2 版',

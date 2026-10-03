@@ -3659,6 +3659,13 @@ export default {
     builder: {
       backgroundTransparency: "Прозорість тла",
       backgroundTransparencyHint: "Змінює лише темне тло. Текст, логотипи та зображення камери залишаються видимими.",
+      layout: 'Компонування',
+      landscape: 'Альбомне',
+      portrait: 'Портретне',
+      both: 'Обидва',
+      orientationUrl: 'URL: {{orientation}}',
+      orientationPreview: 'Попередній перегляд: {{orientation}}',
+      sourceDimensions: 'Джерело браузера: {{width}} × {{height}} пікс.',
       artwork: 'Оформлення',
       artworkClassic: 'Класичне',
       artworkV2: 'Версія 2',

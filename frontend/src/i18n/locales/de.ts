@@ -3632,6 +3632,13 @@ export default {
     builder: {
       backgroundTransparency: 'Hintergrundtransparenz',
       backgroundTransparencyHint: 'Nur die dunklen Hintergründe ausblenden. Text, Logos und Kamera bleiben sichtbar.',
+      layout: 'Anordnung',
+      landscape: 'Querformat',
+      portrait: 'Hochformat',
+      both: 'Beide',
+      orientationUrl: 'URL für {{orientation}}',
+      orientationPreview: 'Vorschau: {{orientation}}',
+      sourceDimensions: 'Browserquelle: {{width}} × {{height}} px',
       artwork: 'Gestaltung',
       artworkClassic: 'Klassisch',
       artworkV2: 'Version 2',
