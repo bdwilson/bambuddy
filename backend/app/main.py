@@ -9594,6 +9594,12 @@ async def lifespan(app: FastAPI):
 
     install_proactor_reset_filter()
 
+    # Before anything opens files or sockets in bulk: a soft limit of 1024 is
+    # what turned descriptor exhaustion into a corrupted database (#2883).
+    from backend.app.core.fd_limit import raise_open_file_limit
+
+    raise_open_file_limit()
+
     # Before init_db, so the warning is near the top of the log rather than
     # below a migration run. See warn_if_running_on_uvloop for what is at stake.
     warn_if_running_on_uvloop()
