@@ -1339,6 +1339,10 @@ export default {
       unknown: 'desconocido',
       printAnyway: 'Imprimir de todos modos',
     },
+    filamentMissing: {
+      confirmTitle: 'Filamento no cargado',
+      confirmIntro: 'La impresora no tiene ninguna bandeja con este filamento. Carguelo y pulse Iniciar de nuevo, o imprima de todos modos:',
+    },
     slicerAmsMapping: {
       rowBadge: 'Ranuras AMS guardadas para esta impresora',
       rowTooltip: 'Este archivo conserva las ranuras AMS exactas que eligió el slicer, guardadas para la impresora de este elemento. Una reimpresión en ella puede reutilizar esas bobinas en lugar de volver a emparejar por tipo y color.',

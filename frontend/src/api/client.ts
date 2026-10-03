@@ -2851,6 +2851,8 @@ export interface PrintBatchDispatchRequest {
 
 export interface PrintQueueItemUpdate {
   printer_id?: number | null;  // null = unassign
+  // A deliberate filament substitution in the mapping (#2799); see PrintModal.
+  skip_filament_check?: boolean;
   target_model?: string | null;  // Target printer model (mutually exclusive with printer_id)
   target_location?: string | null;  // Target location filter (only used with target_model)
   filament_overrides?: Array<{ slot_id: number; type: string; color: string; color_name?: string; tray_info_idx?: string; force_color_match?: boolean }> | null;

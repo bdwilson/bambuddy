@@ -2383,7 +2383,9 @@ async def start_queue_item(
     deficit (#1496) is checked first — if the assigned spool can't satisfy
     a slot's required grams, the route returns ``409`` with the deficit
     payload so the caller can show a confirm dialog and retry with
-    ``skip_filament_check=true``.
+    ``skip_filament_check=true``. The same goes for a filament the printer has
+    no tray for at all (#2799): ``409`` with ``code=unmatched_filament`` and
+    the missing filaments.
     """
     user, can_modify_all = auth_result
 
@@ -2440,6 +2442,28 @@ async def start_queue_item(
                 detail={
                     "code": "insufficient_filament",
                     "deficit": [d.to_dict() for d in deficit],
+                },
+            )
+
+        # A filament the printer has no tray for at all (#2799). Without this,
+        # Start on an item the scheduler held for exactly that would release it
+        # only for the next pass to hold it again, and nothing would ever offer
+        # "Print Anyway".
+        from backend.app.services.print_scheduler import scheduler as _scheduler
+
+        # A convenience, not a gate: the scheduler holds the item again if the
+        # filament is still missing, so a failure here must not break Start.
+        try:
+            missing = await _scheduler.missing_filament_for_start(db, item)
+        except Exception:
+            logger.exception("Queue item %s: filament check before start failed", item_id)
+            missing = None
+        if missing:
+            raise HTTPException(
+                status_code=409,
+                detail={
+                    "code": "unmatched_filament",
+                    "missing": missing,
                 },
             )
 

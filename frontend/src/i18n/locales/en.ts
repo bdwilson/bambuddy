@@ -1351,6 +1351,10 @@ export default {
       unknown: 'unknown',
       printAnyway: 'Print Anyway',
     },
+    filamentMissing: {
+      confirmTitle: 'Filament not loaded',
+      confirmIntro: 'The printer has no tray with this filament. Load it and press Start again, or print anyway:',
+    },
     slicerAmsMapping: {
       rowBadge: 'AMS slots saved for this printer',
       rowTooltip: 'This archive carries the exact AMS slots the slicer picked, saved for the printer this item targets. A reprint on it can reuse those trays instead of matching again by type and colour.',

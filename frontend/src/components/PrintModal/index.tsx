@@ -21,7 +21,7 @@ import { isGcodeCompatible, isPrinterCurrentlyDispatchable } from '../../utils/p
 import { getCurrencySymbol } from '../../utils/currency';
 import { getBedTypeInfo } from '../../utils/bedType';
 import { toDateTimeLocalValue, parseUTCDate } from '../../utils/date';
-import { isPlaceholderDate, effectivePreferLowest } from '../../utils/amsHelpers';
+import { isPlaceholderDate, effectivePreferLowest, filamentTypesCompatible } from '../../utils/amsHelpers';
 import { resolveArchiveSlicerAmsMapping } from './archiveAmsMapping';
 import { FilamentMapping } from './FilamentMapping';
 import { FilamentOverride } from './FilamentOverride';
@@ -226,6 +226,14 @@ export function PrintModal({
     }
     return {};
   });
+
+  // The printer `manualMappings` were resolved against (#2799). Its entries are
+  // global tray IDs, which mean nothing on any other machine, so they follow
+  // this one printer instead of every selected one. Seeded when editing an
+  // existing item, whose stored mapping belongs to the printer it is queued on.
+  const [sharedMappingPrinterId, setSharedMappingPrinterId] = useState<number | null>(() =>
+    mode === 'edit-queue-item' ? queueItem?.printer_id ?? null : null,
+  );
 
   // Per-printer override configs (for multi-printer selection)
   const [perPrinterConfigs, setPerPrinterConfigs] = useState<Record<number, PerPrinterConfig>>({});
@@ -720,6 +728,7 @@ export function PrintModal({
     setPerPrinterConfigs,
     settings?.prefer_lowest_filament,
     inventoryByTrayIdPerPrinter,
+    sharedMappingPrinterId,
   );
 
   // Auto-select first plate when plates load (single or multi-plate)
@@ -909,14 +918,75 @@ export function PrintModal({
       if (plateId === null || selectedPrinters.length !== 1) return undefined;
       return perPlateAmsMappings.get(plateId);
     }
-    // For multi-printer selection, check if this printer has an override
+    // For multi-printer selection every printer maps against its own AMS.
+    // A mapping is a list of global tray IDs, which only mean something on the
+    // printer they were resolved against, so `amsMapping` — computed against
+    // the first selected printer — cannot be reused on the rest: the slot index
+    // still resolves, so nothing looks wrong, and the job prints from whatever
+    // sits in that tray on the other machine (#2799).
+    //
+    // `getFinalMapping` is the single source of truth here: the hook decides
+    // per printer which overrides legitimately apply (its own, the shared ones
+    // if they were authored against it, otherwise none), and the match badge is
+    // derived from that same decision, so the panel cannot promise one mapping
+    // while another is submitted. Undefined while a printer's status loads —
+    // send none and let the scheduler map it at dispatch, as the multi-plate
+    // path above already does.
     if (selectedPrinters.length > 1) {
-      const printerConfig = perPrinterConfigs[printerId];
-      if (printerConfig && !printerConfig.useDefault) {
-        return multiPrinterMapping.getFinalMapping(printerId);
-      }
+      return multiPrinterMapping.getFinalMapping(printerId);
+    }
+    // The single-printer path says the same thing, explicitly. `amsMapping`
+    // folds in `manualMappings`, so it is this printer's mapping only while this
+    // printer is the one those overrides were authored against. In practice the
+    // effect above clears them whenever the selection changes, but that leaves
+    // the rule enforced in one place and merely implied in the other — a thin
+    // thing to rest on the next time that effect is edited.
+    if (sharedMappingPrinterId !== null && sharedMappingPrinterId !== printerId) {
+      return multiPrinterMapping.getFinalMapping(printerId);
     }
     return amsMapping;
+  };
+
+  // Whether `mapping` sends a slot to a tray of another material (#2799). Only
+  // the user can have done that: neither this dialog's matcher nor the
+  // scheduler's maps across types. The scheduler re-checks every stored mapping
+  // against the printer before dispatch, and a slot on a tray of the wrong type
+  // is exactly what a mapping meant for another printer looks like, so it would
+  // replace the user's pick. skip_filament_check is the acknowledgement it
+  // leaves alone. Same type rule as the scheduler, and a tray or requirement
+  // with no type is not judged, as there.
+  //
+  // Editing seeds the picks from the stored mapping, which may itself be a
+  // mapping made for another printer, queued before this check existed. A slot
+  // still on the tray the dialog opened with is not a pick made here, so it is
+  // left to the scheduler to judge.
+  const openedWithTray = (printerId: number, plateId: number | null, slotId: number): number | undefined => {
+    if (mode !== 'edit-queue-item' || !Array.isArray(queueItem?.ams_mapping)) return undefined;
+    if (printerId !== queueItem.printer_id || plateId !== initialPlateId) return undefined;
+    return queueItem.ams_mapping[slotId - 1];
+  };
+  const mappingSubstitutesMaterial = (
+    printerId: number,
+    plateId: number | null,
+    mapping: number[] | undefined,
+  ): boolean => {
+    if (!mapping) return false;
+    const reqs = isMultiPlateSelection
+      ? plateId != null ? mappingPerPlateReqs.get(plateId)?.filaments : undefined
+      : mappingFilamentReqs?.filaments;
+    if (!reqs) return false;
+    const status = selectedPrinters.length > 1
+      ? multiPrinterMapping.printerResults.find((result) => result.printerId === printerId)?.status
+      : printerStatus;
+    const loaded = buildLoadedFilaments(status);
+    return reqs.some((req) => {
+      const slotId = req.slot_id ?? 0;
+      const tray = slotId > 0 ? mapping[slotId - 1] : undefined;
+      if (tray == null || tray < 0) return false;
+      if (openedWithTray(printerId, plateId, slotId) === tray) return false;
+      const filament = loaded.find((f) => f.globalTrayId === tray);
+      return !!filament?.type && !!req.type && !filamentTypesCompatible(filament.type, req.type);
+    });
   };
 
   const handleSubmit = async (e?: React.FormEvent, options?: { skipFilamentCheck?: boolean }) => {
@@ -1273,7 +1343,11 @@ export function PrintModal({
       // When the user clicks "Print Anyway" on the frontend deficit warning,
       // persist that acknowledgement so the scheduler doesn't immediately
       // re-flag the item on its first dispatch tick (#1698-followup).
-      skip_filament_check: options?.skipFilamentCheck === true ? true : undefined,
+      skip_filament_check:
+        options?.skipFilamentCheck === true ||
+        (printerId != null && mappingSubstitutesMaterial(printerId, plateId, getMappingForPrinter(printerId, plateId)))
+          ? true
+          : undefined,
       ams_mapping: printerId ? getMappingForPrinter(printerId, plateId) : undefined,
       // Rack positions per filament group (#1784). Only sent in printer mode:
       // in model mode the target printer is not known yet, and the rack it
@@ -1376,6 +1450,9 @@ export function PrintModal({
                 gcode_injection: scheduleOptions.gcodeInjection,
                 manual_start: scheduleOptions.scheduleType === 'queue' && scheduleOptions.requireManualStart,
                 ams_mapping: printerMapping,
+                // Only ever set here, never cleared: an earlier "Print Anyway"
+                // stays acknowledged across an edit, as it does today.
+                skip_filament_check: mappingSubstitutesMaterial(printerId, plateId, printerMapping) ? true : undefined,
                 // null, not undefined: an operator who cleared their picks
                 // means "assign these again", and undefined would leave the
                 // stale ones on the row (#1784).
@@ -1860,7 +1937,12 @@ export function PrintModal({
                 printerId={effectivePrinterId!}
                 filamentReqs={mappingFilamentReqs}
                 manualMappings={manualMappings}
-                onManualMappingChange={setManualMappings}
+                onManualMappingChange={(next) => {
+                  // This panel only renders for a single selected printer, so
+                  // its tray IDs belong to that printer alone (#2799).
+                  setSharedMappingPrinterId(effectivePrinterId!);
+                  setManualMappings(next);
+                }}
                 onEstimatedCostChange={setEstimatedCost}
                 budgetAvailable={billingEnabled ? selectedCostCenter?.budget_available ?? null : null}
                 quantity={effectiveQuantity}

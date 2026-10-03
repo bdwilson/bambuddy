@@ -1338,6 +1338,10 @@ export default {
       unknown: '不明',
       printAnyway: 'それでも印刷',
     },
+    filamentMissing: {
+      confirmTitle: 'フィラメント未装填',
+      confirmIntro: 'このフィラメントが装填されたトレイがプリンターにありません。装填してからもう一度開始を押すか、それでも印刷してください:',
+    },
     slicerAmsMapping: {
       rowBadge: 'このプリンター用に保存されたAMSスロット',
       rowTooltip: 'このアーカイブには、スライサーが選択した正確なAMSスロットが、この項目の対象プリンター用に保存されています。そのプリンターでの再印刷では、タイプと色で照合し直す代わりにそれらのトレイを再利用できます。',

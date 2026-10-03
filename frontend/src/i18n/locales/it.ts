@@ -1339,6 +1339,10 @@ export default {
       unknown: 'sconosciuto',
       printAnyway: 'Stampa comunque',
     },
+    filamentMissing: {
+      confirmTitle: 'Filamento non caricato',
+      confirmIntro: 'La stampante non ha nessuno slot con questo filamento. Caricalo e premi di nuovo Avvia, oppure stampa comunque:',
+    },
     slicerAmsMapping: {
       rowBadge: 'Slot AMS salvati per questa stampante',
       rowTooltip: 'Questo archivio conserva gli slot AMS esatti scelti dallo slicer, salvati per la stampante di questo elemento. Una ristampa su di essa può riutilizzare quelle bobine invece di rifare l\'abbinamento per tipo e colore.',

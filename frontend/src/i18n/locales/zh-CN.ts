@@ -1339,6 +1339,10 @@ export default {
       unknown: '未知',
       printAnyway: '仍要打印',
     },
+    filamentMissing: {
+      confirmTitle: '耗材未装载',
+      confirmIntro: '打印机上没有装有此耗材的料槽。请装载后再次点击开始，或仍要打印：',
+    },
     slicerAmsMapping: {
       rowBadge: '已为此打印机保存 AMS 槽位',
       rowTooltip: '此存档保留了切片软件选择的确切 AMS 槽位，并为该项目的目标打印机保存。在该打印机上重新打印时，可复用这些料盘，而不必再按类型和颜色重新匹配。',

@@ -1586,6 +1586,10 @@ export default {
       unknown: '알 수 없음',
       printAnyway: '그냥 인쇄'
     },
+    filamentMissing: {
+      confirmTitle: '필라멘트 미장착',
+      confirmIntro: '프린터에 이 필라멘트가 장착된 트레이가 없습니다. 장착한 뒤 다시 시작을 누르거나, 그냥 인쇄하세요:',
+    },
     slicerAmsMapping: {
       rowBadge: '이 프린터용으로 저장된 AMS 슬롯',
       rowTooltip: '이 아카이브에는 슬라이서가 선택한 정확한 AMS 슬롯이 이 항목의 대상 프린터용으로 저장되어 있습니다. 해당 프린터에서 재인쇄하면 유형과 색상으로 다시 맞추는 대신 그 트레이를 재사용할 수 있습니다.',

@@ -1339,6 +1339,10 @@ export default {
       unknown: 'inconnu',
       printAnyway: 'Imprimer quand meme',
     },
+    filamentMissing: {
+      confirmTitle: 'Filament non charge',
+      confirmIntro: 'L\'imprimante n\'a aucun emplacement avec ce filament. Chargez-le et appuyez de nouveau sur Demarrer, ou imprimez quand meme :',
+    },
     slicerAmsMapping: {
       rowBadge: 'Emplacements AMS enregistrés pour cette imprimante',
       rowTooltip: 'Cette archive conserve les emplacements AMS exacts choisis par le slicer, enregistrés pour l\'imprimante de cet élément. Une réimpression dessus peut réutiliser ces bobines au lieu de refaire la correspondance par type et couleur.',

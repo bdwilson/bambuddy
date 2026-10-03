@@ -1351,6 +1351,10 @@ export default {
       unknown: 'okänd',
       printAnyway: 'Skriv ut ändå',
     },
+    filamentMissing: {
+      confirmTitle: 'Filament inte laddat',
+      confirmIntro: 'Skrivaren har inget fack med detta filament. Ladda det och tryck på Start igen, eller skriv ut ändå:',
+    },
     slicerAmsMapping: {
       rowBadge: 'AMS-fack sparade för denna skrivare',
       rowTooltip: 'Detta arkiv innehåller de exakta AMS-fack som slicer-programmet valde, sparade för den skrivare denna post riktar sig till. En omutskrift på den kan återanvända dessa brickor istället för att matcha igen efter typ och färg.',

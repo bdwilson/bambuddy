@@ -147,6 +147,9 @@ class PrintQueueItemUpdate(BaseModel):
     require_previous_success: bool | None = None
     auto_off_after: bool | None = None
     manual_start: bool | None = None
+    # Set by the print dialog when the mapping deliberately puts a slot on a
+    # tray of another material, so the dispatch re-check keeps it (#2799).
+    skip_filament_check: bool | None = None
     ams_mapping: list[int] | None = None
     plate_id: int | None = None
     # Print options

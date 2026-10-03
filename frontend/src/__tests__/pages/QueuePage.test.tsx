@@ -1598,6 +1598,53 @@ describe('QueuePage', () => {
     });
   });
 
+  describe('filament-not-loaded ▶ flow (#2799)', () => {
+    /**
+     * The scheduler held the item because a filament it prints has no tray on
+     * the printer. ▶ asks the backend first: still missing is a 409 with the
+     * missing filaments, and "Print Anyway" retries with skip_filament_check.
+     */
+    const heldItem = {
+      ...mockQueueItems[0],
+      manual_start: true,
+      waiting_reason: 'Needs PETG #2850E0',
+    };
+
+    it('shows the missing filament and retries with skip_filament_check', async () => {
+      let secondCallSkippedCheck: boolean | null = null;
+      let attempts = 0;
+      server.use(
+        http.get('/api/v1/queue/', () => HttpResponse.json([heldItem])),
+        http.post('/api/v1/queue/:id/start', ({ request }) => {
+          attempts += 1;
+          if (attempts === 1) {
+            return HttpResponse.json(
+              { detail: { code: 'unmatched_filament', missing: ['PETG #2850E0'] } },
+              { status: 409 },
+            );
+          }
+          secondCallSkippedCheck = new URL(request.url).searchParams.get('skip_filament_check') === 'true';
+          return HttpResponse.json({ ...heldItem, manual_start: false });
+        }),
+      );
+
+      render(<QueuePage />);
+
+      const playButton = await screen.findByTitle(/Start Print|do not have permission to start prints/i);
+      await userEvent.click(playButton);
+
+      await waitFor(() => expect(attempts).toBe(1));
+      await screen.findByText('Filament not loaded');
+      // The dialog's message names what to load; the row says it too.
+      expect(screen.getByText(/no tray with this filament[\s\S]*PETG #2850E0/)).toBeInTheDocument();
+
+      await userEvent.click(screen.getByRole('button', { name: /Print Anyway/i }));
+
+      await waitFor(() => expect(secondCallSkippedCheck).toBe(true));
+      expect(attempts).toBe(2);
+    });
+  });
+
   // #2667: mobile can't drag-reorder the queue, so pending rows get up/down
   // arrows. They persist via the same POST /queue/reorder as drag. The
   // buttons live in the DOM at every width (Tailwind `sm:hidden` is CSS-only),

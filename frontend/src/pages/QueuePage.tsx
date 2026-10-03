@@ -1882,6 +1882,14 @@ export function QueuePage() {
     }>;
   } | null>(null);
 
+  // A filament the printer has no tray for at all (#2799): 409 with
+  // `code=unmatched_filament` and the missing filaments. Same "Print Anyway"
+  // path as the deficit above.
+  const [filamentMissingConfirm, setFilamentMissingConfirm] = useState<{
+    itemId: number;
+    missing: string[];
+  } | null>(null);
+
   const startMutation = useMutation({
     mutationFn: ({ id, skipFilamentCheck }: { id: number; skipFilamentCheck?: boolean }) =>
       api.startQueueItem(id, { skipFilamentCheck }),
@@ -1889,6 +1897,7 @@ export function QueuePage() {
       queryClient.invalidateQueries({ queryKey: ['queue'] });
       showToast(t('queue.toast.released'));
       setFilamentShortConfirm(null);
+      setFilamentMissingConfirm(null);
     },
     onError: (error: unknown, variables) => {
       if (error instanceof ApiError && error.status === 409 && error.code === 'insufficient_filament') {
@@ -1899,6 +1908,11 @@ export function QueuePage() {
           filament_type?: string | null;
         }>;
         setFilamentShortConfirm({ itemId: variables.id, deficit: deficitRaw });
+        return;
+      }
+      if (error instanceof ApiError && error.status === 409 && error.code === 'unmatched_filament') {
+        const missing = (error.detail?.missing ?? []) as string[];
+        setFilamentMissingConfirm({ itemId: variables.id, missing });
         return;
       }
       showToast(t('queue.toast.startFailed'), 'error');
@@ -3139,6 +3153,19 @@ export function QueuePage() {
             startMutation.mutate({ id: filamentShortConfirm.itemId, skipFilamentCheck: true });
           }}
           onCancel={() => setFilamentShortConfirm(null)}
+        />
+      )}
+
+      {filamentMissingConfirm && (
+        <ConfirmModal
+          title={t('queue.filamentMissing.confirmTitle')}
+          message={t('queue.filamentMissing.confirmIntro') + '\n\n' + filamentMissingConfirm.missing.join('\n')}
+          confirmText={t('queue.filamentShort.printAnyway')}
+          variant="warning"
+          onConfirm={() => {
+            startMutation.mutate({ id: filamentMissingConfirm.itemId, skipFilamentCheck: true });
+          }}
+          onCancel={() => setFilamentMissingConfirm(null)}
         />
       )}
 

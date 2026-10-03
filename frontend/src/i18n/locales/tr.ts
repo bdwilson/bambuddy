@@ -1341,6 +1341,10 @@ export default {
       unknown: 'bilinmiyor',
       printAnyway: 'Yine de Yazdır',
     },
+    filamentMissing: {
+      confirmTitle: 'Filament yüklü değil',
+      confirmIntro: 'Yazıcıda bu filamente sahip bir yuva yok. Yükleyip yeniden Başlat\'a basın veya yine de yazdırın:',
+    },
     slicerAmsMapping: {
       rowBadge: 'Bu yazıcı için kaydedilen AMS yuvaları',
       rowTooltip: 'Bu arşiv, dilimleyicinin seçtiği tam AMS yuvalarını bu öğenin hedeflediği yazıcı için saklar. O yazıcıda yeniden yazdırma, tür ve renge göre yeniden eşleştirmek yerine bu makaraları yeniden kullanabilir.',

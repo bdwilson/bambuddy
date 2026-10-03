@@ -1351,6 +1351,10 @@ export default {
       unknown: 'onbekend',
       printAnyway: 'Toch afdrukken',
     },
+    filamentMissing: {
+      confirmTitle: 'Filament niet geladen',
+      confirmIntro: 'De printer heeft geen sleuf met dit filament. Laad het en druk opnieuw op Start, of druk toch af:',
+    },
     slicerAmsMapping: {
       rowBadge: 'AMS-sleuven opgeslagen voor deze printer',
       rowTooltip: 'Dit archief bevat de exacte AMS-sleuven die de slicer heeft gekozen, opgeslagen voor de printer waarop dit item is gericht. Bij opnieuw afdrukken op deze printer kunnen die trays worden hergebruikt in plaats van opnieuw op type en kleur te matchen.',

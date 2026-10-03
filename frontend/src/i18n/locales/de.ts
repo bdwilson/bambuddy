@@ -1339,6 +1339,10 @@ export default {
       unknown: 'unbekannt',
       printAnyway: 'Trotzdem drucken',
     },
+    filamentMissing: {
+      confirmTitle: 'Filament nicht geladen',
+      confirmIntro: 'Der Drucker hat kein Fach mit diesem Filament. Legen Sie es ein und drücken Sie erneut auf Start, oder drucken Sie trotzdem:',
+    },
     slicerAmsMapping: {
       rowBadge: 'AMS-Steckplätze für diesen Drucker gespeichert',
       rowTooltip: 'Dieses Archiv enthält die genauen AMS-Steckplätze, die der Slicer ausgewählt hat, gespeichert für den Drucker dieses Eintrags. Ein erneuter Druck darauf kann diese Fächer wiederverwenden, statt erneut nach Typ und Farbe zuzuordnen.',
