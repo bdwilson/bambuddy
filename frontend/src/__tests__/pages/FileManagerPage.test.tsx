@@ -1674,6 +1674,15 @@ describe('FileManagerPage', () => {
 
       // User filter dropdown should not be present
       expect(screen.queryByPlaceholderText('Filter by user')).not.toBeInTheDocument();
+
+      // #3105: the logged-out column set needs the same floors as the
+      // authenticated one, minus the Uploaded By track.
+      const header = screen.getByTestId('file-list-grid-header');
+      const rows = screen.getAllByTestId('file-list-grid-row');
+      for (const el of [header, ...rows]) {
+        expect(el).toHaveClass('min-w-min');
+        expect(el.className).toContain('grid-cols-[24px_minmax(240px,1fr)_100px_100px_100px_minmax(96px,200px)_220px]');
+      }
     });
 
     it('shows "Uploaded By" column and user filter when auth is enabled', async () => {
@@ -1733,6 +1742,17 @@ describe('FileManagerPage', () => {
 
       // Username should be displayed in the column
       expect(screen.getByText('testuser')).toBeInTheDocument();
+
+      // #3105: the authenticated grid has enough fixed-width columns to
+      // squeeze a bare 1fr filename track to zero. Header and rows must share
+      // the same minimum width and non-collapsible filename and tags tracks
+      // so the existing overflow wrapper scrolls instead.
+      const header = screen.getByTestId('file-list-grid-header');
+      const rows = screen.getAllByTestId('file-list-grid-row');
+      for (const el of [header, ...rows]) {
+        expect(el).toHaveClass('min-w-min');
+        expect(el.className).toContain('grid-cols-[24px_minmax(240px,1fr)_120px_100px_100px_100px_minmax(96px,200px)_220px]');
+      }
     });
   });
 
