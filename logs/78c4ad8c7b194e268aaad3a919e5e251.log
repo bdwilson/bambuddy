@@ -1,0 +1,200 @@
+2026-10-05 19:07:23,902 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] xcam cfg bitmask: 1797271 (binary: 0b110110110110010010111)
+2026-10-05 19:07:23,902 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: FINISH, gcode_file: /data/Metadata/plate_1.gcode, subtask_name: full-length-D-fit-gauge
+2026-10-05 19:07:23,903 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-10-05 19:07:23,903 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-10-05 19:07:23,903 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: [{'attr': 50343424, 'code': 196609}, {'attr': 83952640, 'code': 196610}, {'attr': 83952640, 'code': 196612}]
+2026-10-05 19:07:23,904 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'mode': 'on', 'node': 'chamber_light'}, {'mode': 'flashing', 'node': 'work_light'}, {'mode': 'on', 'node': 'chamber_light2'}]
+2026-10-05 19:07:23,904 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] MQTT mapping field: [2]
+2026-10-05 19:07:23,904 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: FINISH -> FINISH, file: /data/Metadata/plate_1.gcode, subtask: full-length-D-fit-gauge
+2026-10-05 19:07:25,373 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Found xcam inside print data: {'allow_skip_parts': False, 'buildplate_marker_detector': True, 'cfg': 1797271, 'first_layer_inspector': True, 'halt_print_sensitivity': 'medium', 'print_halt': True, 'printing_monitor': True, 'spaghetti_detector': True}
+2026-10-05 19:07:25,373 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Parsing xcam data - all fields: ['allow_skip_parts', 'buildplate_marker_detector', 'cfg', 'first_layer_inspector', 'halt_print_sensitivity', 'print_halt', 'printing_monitor', 'spaghetti_detector']
+2026-10-05 19:07:25,373 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] xcam cfg bitmask: 1797271 (binary: 0b110110110110010010111)
+2026-10-05 19:07:25,373 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: FINISH, gcode_file: /data/Metadata/plate_1.gcode, subtask_name: full-length-D-fit-gauge
+2026-10-05 19:07:25,374 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-10-05 19:07:25,374 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-10-05 19:07:25,374 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: [{'attr': 50343424, 'code': 196609}, {'attr': 83952640, 'code': 196610}, {'attr': 83952640, 'code': 196612}]
+2026-10-05 19:07:25,374 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'mode': 'on', 'node': 'chamber_light'}, {'mode': 'flashing', 'node': 'work_light'}, {'mode': 'on', 'node': 'chamber_light2'}]
+2026-10-05 19:07:25,375 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] MQTT mapping field: [2]
+2026-10-05 19:07:25,375 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: FINISH -> FINISH, file: /data/Metadata/plate_1.gcode, subtask: full-length-D-fit-gauge
+2026-10-05 19:07:26,625 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Found xcam inside print data: {'allow_skip_parts': False, 'buildplate_marker_detector': True, 'cfg': 1797271, 'first_layer_inspector': True, 'halt_print_sensitivity': 'medium', 'print_halt': True, 'printing_monitor': True, 'spaghetti_detector': True}
+2026-10-05 19:07:26,625 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Parsing xcam data - all fields: ['allow_skip_parts', 'buildplate_marker_detector', 'cfg', 'first_layer_inspector', 'halt_print_sensitivity', 'print_halt', 'printing_monitor', 'spaghetti_detector']
+2026-10-05 19:07:26,625 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] xcam cfg bitmask: 1797271 (binary: 0b110110110110010010111)
+2026-10-05 19:07:26,625 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: FINISH, gcode_file: /data/Metadata/plate_1.gcode, subtask_name: full-length-D-fit-gauge
+2026-10-05 19:07:26,626 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-10-05 19:07:26,626 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-10-05 19:07:26,626 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: [{'attr': 50343424, 'code': 196609}, {'attr': 83952640, 'code': 196610}, {'attr': 83952640, 'code': 196612}]
+2026-10-05 19:07:26,626 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'mode': 'on', 'node': 'chamber_light'}, {'mode': 'flashing', 'node': 'work_light'}, {'mode': 'on', 'node': 'chamber_light2'}]
+2026-10-05 19:07:26,627 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] MQTT mapping field: [2]
+2026-10-05 19:07:26,627 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: FINISH -> FINISH, file: /data/Metadata/plate_1.gcode, subtask: full-length-D-fit-gauge
+2026-10-05 19:07:27,977 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Found xcam inside print data: {'allow_skip_parts': False, 'buildplate_marker_detector': True, 'cfg': 1797271, 'first_layer_inspector': True, 'halt_print_sensitivity': 'medium', 'print_halt': True, 'printing_monitor': True, 'spaghetti_detector': True}
+2026-10-05 19:07:27,977 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Parsing xcam data - all fields: ['allow_skip_parts', 'buildplate_marker_detector', 'cfg', 'first_layer_inspector', 'halt_print_sensitivity', 'print_halt', 'printing_monitor', 'spaghetti_detector']
+2026-10-05 19:07:27,978 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] xcam cfg bitmask: 1797271 (binary: 0b110110110110010010111)
+2026-10-05 19:07:27,978 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: FINISH, gcode_file: /data/Metadata/plate_1.gcode, subtask_name: full-length-D-fit-gauge
+2026-10-05 19:07:27,978 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-10-05 19:07:27,978 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-10-05 19:07:27,978 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: [{'attr': 50343424, 'code': 196609}, {'attr': 83952640, 'code': 196610}, {'attr': 83952640, 'code': 196612}]
+2026-10-05 19:07:27,978 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'mode': 'on', 'node': 'chamber_light'}, {'mode': 'flashing', 'node': 'work_light'}, {'mode': 'on', 'node': 'chamber_light2'}]
+2026-10-05 19:07:27,979 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] MQTT mapping field: [2]
+2026-10-05 19:07:27,979 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: FINISH -> FINISH, file: /data/Metadata/plate_1.gcode, subtask: full-length-D-fit-gauge
+2026-10-05 19:07:29,472 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Found xcam inside print data: {'allow_skip_parts': False, 'buildplate_marker_detector': True, 'cfg': 1797271, 'first_layer_inspector': True, 'halt_print_sensitivity': 'medium', 'print_halt': True, 'printing_monitor': True, 'spaghetti_detector': True}
+2026-10-05 19:07:29,473 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Parsing xcam data - all fields: ['allow_skip_parts', 'buildplate_marker_detector', 'cfg', 'first_layer_inspector', 'halt_print_sensitivity', 'print_halt', 'printing_monitor', 'spaghetti_detector']
+2026-10-05 19:07:29,473 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] xcam cfg bitmask: 1797271 (binary: 0b110110110110010010111)
+2026-10-05 19:07:29,473 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: FINISH, gcode_file: /data/Metadata/plate_1.gcode, subtask_name: full-length-D-fit-gauge
+2026-10-05 19:07:29,473 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-10-05 19:07:29,473 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-10-05 19:07:29,474 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: [{'attr': 50343424, 'code': 196609}, {'attr': 83952640, 'code': 196610}, {'attr': 83952640, 'code': 196612}]
+2026-10-05 19:07:29,474 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'mode': 'on', 'node': 'chamber_light'}, {'mode': 'flashing', 'node': 'work_light'}, {'mode': 'on', 'node': 'chamber_light2'}]
+2026-10-05 19:07:29,475 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] MQTT mapping field: [2]
+2026-10-05 19:07:29,475 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: FINISH -> FINISH, file: /data/Metadata/plate_1.gcode, subtask: full-length-D-fit-gauge
+2026-10-05 19:07:30,657 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Found xcam inside print data: {'allow_skip_parts': False, 'buildplate_marker_detector': True, 'cfg': 1797271, 'first_layer_inspector': True, 'halt_print_sensitivity': 'medium', 'print_halt': True, 'printing_monitor': True, 'spaghetti_detector': True}
+2026-10-05 19:07:30,657 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Parsing xcam data - all fields: ['allow_skip_parts', 'buildplate_marker_detector', 'cfg', 'first_layer_inspector', 'halt_print_sensitivity', 'print_halt', 'printing_monitor', 'spaghetti_detector']
+2026-10-05 19:07:30,657 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] xcam cfg bitmask: 1797271 (binary: 0b110110110110010010111)
+2026-10-05 19:07:30,658 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: FINISH, gcode_file: /data/Metadata/plate_1.gcode, subtask_name: full-length-D-fit-gauge
+2026-10-05 19:07:30,658 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-10-05 19:07:30,658 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-10-05 19:07:30,659 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: [{'attr': 50343424, 'code': 196609}, {'attr': 83952640, 'code': 196610}, {'attr': 83952640, 'code': 196612}]
+2026-10-05 19:07:30,659 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'mode': 'on', 'node': 'chamber_light'}, {'mode': 'flashing', 'node': 'work_light'}, {'mode': 'on', 'node': 'chamber_light2'}]
+2026-10-05 19:07:30,659 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] MQTT mapping field: [2]
+2026-10-05 19:07:30,659 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: FINISH -> FINISH, file: /data/Metadata/plate_1.gcode, subtask: full-length-D-fit-gauge
+2026-10-05 19:07:32,153 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Found xcam inside print data: {'allow_skip_parts': False, 'buildplate_marker_detector': True, 'cfg': 1797271, 'first_layer_inspector': True, 'halt_print_sensitivity': 'medium', 'print_halt': True, 'printing_monitor': True, 'spaghetti_detector': True}
+2026-10-05 19:07:32,153 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Parsing xcam data - all fields: ['allow_skip_parts', 'buildplate_marker_detector', 'cfg', 'first_layer_inspector', 'halt_print_sensitivity', 'print_halt', 'printing_monitor', 'spaghetti_detector']
+2026-10-05 19:07:32,153 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] xcam cfg bitmask: 1797271 (binary: 0b110110110110010010111)
+2026-10-05 19:07:32,153 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: FINISH, gcode_file: /data/Metadata/plate_1.gcode, subtask_name: full-length-D-fit-gauge
+2026-10-05 19:07:32,153 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-10-05 19:07:32,153 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-10-05 19:07:32,154 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: [{'attr': 50343424, 'code': 196609}, {'attr': 83952640, 'code': 196610}, {'attr': 83952640, 'code': 196612}]
+2026-10-05 19:07:32,154 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'mode': 'on', 'node': 'chamber_light'}, {'mode': 'flashing', 'node': 'work_light'}, {'mode': 'on', 'node': 'chamber_light2'}]
+2026-10-05 19:07:32,154 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] MQTT mapping field: [2]
+2026-10-05 19:07:32,154 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: FINISH -> FINISH, file: /data/Metadata/plate_1.gcode, subtask: full-length-D-fit-gauge
+2026-10-05 19:07:33,336 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Found xcam inside print data: {'allow_skip_parts': False, 'buildplate_marker_detector': True, 'cfg': 1797271, 'first_layer_inspector': True, 'halt_print_sensitivity': 'medium', 'print_halt': True, 'printing_monitor': True, 'spaghetti_detector': True}
+2026-10-05 19:07:33,336 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Parsing xcam data - all fields: ['allow_skip_parts', 'buildplate_marker_detector', 'cfg', 'first_layer_inspector', 'halt_print_sensitivity', 'print_halt', 'printing_monitor', 'spaghetti_detector']
+2026-10-05 19:07:33,336 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] xcam cfg bitmask: 1797271 (binary: 0b110110110110010010111)
+2026-10-05 19:07:33,336 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: FINISH, gcode_file: /data/Metadata/plate_1.gcode, subtask_name: full-length-D-fit-gauge
+2026-10-05 19:07:33,336 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-10-05 19:07:33,336 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-10-05 19:07:33,337 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: [{'attr': 50343424, 'code': 196609}, {'attr': 83952640, 'code': 196610}, {'attr': 83952640, 'code': 196612}]
+2026-10-05 19:07:33,337 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'mode': 'on', 'node': 'chamber_light'}, {'mode': 'flashing', 'node': 'work_light'}, {'mode': 'on', 'node': 'chamber_light2'}]
+2026-10-05 19:07:33,337 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] MQTT mapping field: [2]
+2026-10-05 19:07:33,337 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: FINISH -> FINISH, file: /data/Metadata/plate_1.gcode, subtask: full-length-D-fit-gauge
+2026-10-05 19:07:34,651 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Found xcam inside print data: {'allow_skip_parts': False, 'buildplate_marker_detector': True, 'cfg': 1797271, 'first_layer_inspector': True, 'halt_print_sensitivity': 'medium', 'print_halt': True, 'printing_monitor': True, 'spaghetti_detector': True}
+2026-10-05 19:07:34,651 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Parsing xcam data - all fields: ['allow_skip_parts', 'buildplate_marker_detector', 'cfg', 'first_layer_inspector', 'halt_print_sensitivity', 'print_halt', 'printing_monitor', 'spaghetti_detector']
+2026-10-05 19:07:34,651 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] xcam cfg bitmask: 1797271 (binary: 0b110110110110010010111)
+2026-10-05 19:07:34,651 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: FINISH, gcode_file: /data/Metadata/plate_1.gcode, subtask_name: full-length-D-fit-gauge
+2026-10-05 19:07:34,651 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-10-05 19:07:34,651 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-10-05 19:07:34,652 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: [{'attr': 50343424, 'code': 196609}, {'attr': 83952640, 'code': 196610}, {'attr': 83952640, 'code': 196612}]
+2026-10-05 19:07:34,652 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'mode': 'on', 'node': 'chamber_light'}, {'mode': 'flashing', 'node': 'work_light'}, {'mode': 'on', 'node': 'chamber_light2'}]
+2026-10-05 19:07:34,652 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] MQTT mapping field: [2]
+2026-10-05 19:07:34,652 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: FINISH -> FINISH, file: /data/Metadata/plate_1.gcode, subtask: full-length-D-fit-gauge
+2026-10-05 19:07:36,056 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Found xcam inside print data: {'allow_skip_parts': False, 'buildplate_marker_detector': True, 'cfg': 1797271, 'first_layer_inspector': True, 'halt_print_sensitivity': 'medium', 'print_halt': True, 'printing_monitor': True, 'spaghetti_detector': True}
+2026-10-05 19:07:36,056 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Parsing xcam data - all fields: ['allow_skip_parts', 'buildplate_marker_detector', 'cfg', 'first_layer_inspector', 'halt_print_sensitivity', 'print_halt', 'printing_monitor', 'spaghetti_detector']
+2026-10-05 19:07:36,057 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] xcam cfg bitmask: 1797271 (binary: 0b110110110110010010111)
+2026-10-05 19:07:36,057 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: FINISH, gcode_file: /data/Metadata/plate_1.gcode, subtask_name: full-length-D-fit-gauge
+2026-10-05 19:07:36,057 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-10-05 19:07:36,057 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-10-05 19:07:36,057 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: [{'attr': 50343424, 'code': 196609}, {'attr': 83952640, 'code': 196610}, {'attr': 83952640, 'code': 196612}]
+2026-10-05 19:07:36,057 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'mode': 'on', 'node': 'chamber_light'}, {'mode': 'flashing', 'node': 'work_light'}, {'mode': 'on', 'node': 'chamber_light2'}]
+2026-10-05 19:07:36,058 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] MQTT mapping field: [2]
+2026-10-05 19:07:36,058 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: FINISH -> FINISH, file: /data/Metadata/plate_1.gcode, subtask: full-length-D-fit-gauge
+2026-10-05 19:07:37,374 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Found xcam inside print data: {'allow_skip_parts': False, 'buildplate_marker_detector': True, 'cfg': 1797271, 'first_layer_inspector': True, 'halt_print_sensitivity': 'medium', 'print_halt': True, 'printing_monitor': True, 'spaghetti_detector': True}
+2026-10-05 19:07:37,374 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Parsing xcam data - all fields: ['allow_skip_parts', 'buildplate_marker_detector', 'cfg', 'first_layer_inspector', 'halt_print_sensitivity', 'print_halt', 'printing_monitor', 'spaghetti_detector']
+2026-10-05 19:07:37,374 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] xcam cfg bitmask: 1797271 (binary: 0b110110110110010010111)
+2026-10-05 19:07:37,375 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: FINISH, gcode_file: /data/Metadata/plate_1.gcode, subtask_name: full-length-D-fit-gauge
+2026-10-05 19:07:37,375 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-10-05 19:07:37,375 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-10-05 19:07:37,375 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: [{'attr': 50343424, 'code': 196609}, {'attr': 83952640, 'code': 196610}, {'attr': 83952640, 'code': 196612}]
+2026-10-05 19:07:37,375 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'mode': 'on', 'node': 'chamber_light'}, {'mode': 'flashing', 'node': 'work_light'}, {'mode': 'on', 'node': 'chamber_light2'}]
+2026-10-05 19:07:37,376 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] MQTT mapping field: [2]
+2026-10-05 19:07:37,376 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: FINISH -> FINISH, file: /data/Metadata/plate_1.gcode, subtask: full-length-D-fit-gauge
+2026-10-05 19:07:38,761 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Found xcam inside print data: {'allow_skip_parts': False, 'buildplate_marker_detector': True, 'cfg': 1797271, 'first_layer_inspector': True, 'halt_print_sensitivity': 'medium', 'print_halt': True, 'printing_monitor': True, 'spaghetti_detector': True}
+2026-10-05 19:07:38,761 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Parsing xcam data - all fields: ['allow_skip_parts', 'buildplate_marker_detector', 'cfg', 'first_layer_inspector', 'halt_print_sensitivity', 'print_halt', 'printing_monitor', 'spaghetti_detector']
+2026-10-05 19:07:38,762 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] xcam cfg bitmask: 1797271 (binary: 0b110110110110010010111)
+2026-10-05 19:07:38,762 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: FINISH, gcode_file: /data/Metadata/plate_1.gcode, subtask_name: full-length-D-fit-gauge
+2026-10-05 19:07:38,762 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-10-05 19:07:38,762 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-10-05 19:07:38,762 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: [{'attr': 50343424, 'code': 196609}, {'attr': 83952640, 'code': 196610}, {'attr': 83952640, 'code': 196612}]
+2026-10-05 19:07:38,763 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'mode': 'on', 'node': 'chamber_light'}, {'mode': 'flashing', 'node': 'work_light'}, {'mode': 'on', 'node': 'chamber_light2'}]
+2026-10-05 19:07:38,763 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] MQTT mapping field: [2]
+2026-10-05 19:07:38,763 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: FINISH -> FINISH, file: /data/Metadata/plate_1.gcode, subtask: full-length-D-fit-gauge
+2026-10-05 19:07:40,282 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Found xcam inside print data: {'allow_skip_parts': False, 'buildplate_marker_detector': True, 'cfg': 1797271, 'first_layer_inspector': True, 'halt_print_sensitivity': 'medium', 'print_halt': True, 'printing_monitor': True, 'spaghetti_detector': True}
+2026-10-05 19:07:40,282 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Parsing xcam data - all fields: ['allow_skip_parts', 'buildplate_marker_detector', 'cfg', 'first_layer_inspector', 'halt_print_sensitivity', 'print_halt', 'printing_monitor', 'spaghetti_detector']
+2026-10-05 19:07:40,282 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] xcam cfg bitmask: 1797271 (binary: 0b110110110110010010111)
+2026-10-05 19:07:40,282 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: FINISH, gcode_file: /data/Metadata/plate_1.gcode, subtask_name: full-length-D-fit-gauge
+2026-10-05 19:07:40,282 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-10-05 19:07:40,282 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-10-05 19:07:40,282 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: [{'attr': 50343424, 'code': 196609}, {'attr': 83952640, 'code': 196610}, {'attr': 83952640, 'code': 196612}]
+2026-10-05 19:07:40,282 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'mode': 'on', 'node': 'chamber_light'}, {'mode': 'flashing', 'node': 'work_light'}, {'mode': 'on', 'node': 'chamber_light2'}]
+2026-10-05 19:07:40,283 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] MQTT mapping field: [2]
+2026-10-05 19:07:40,283 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: FINISH -> FINISH, file: /data/Metadata/plate_1.gcode, subtask: full-length-D-fit-gauge
+2026-10-05 19:07:41,779 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Found xcam inside print data: {'allow_skip_parts': False, 'buildplate_marker_detector': True, 'cfg': 1797271, 'first_layer_inspector': True, 'halt_print_sensitivity': 'medium', 'print_halt': True, 'printing_monitor': True, 'spaghetti_detector': True}
+2026-10-05 19:07:41,780 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Parsing xcam data - all fields: ['allow_skip_parts', 'buildplate_marker_detector', 'cfg', 'first_layer_inspector', 'halt_print_sensitivity', 'print_halt', 'printing_monitor', 'spaghetti_detector']
+2026-10-05 19:07:41,780 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] xcam cfg bitmask: 1797271 (binary: 0b110110110110010010111)
+2026-10-05 19:07:41,780 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: FINISH, gcode_file: /data/Metadata/plate_1.gcode, subtask_name: full-length-D-fit-gauge
+2026-10-05 19:07:41,780 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-10-05 19:07:41,780 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-10-05 19:07:41,781 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: [{'attr': 50343424, 'code': 196609}, {'attr': 83952640, 'code': 196610}, {'attr': 83952640, 'code': 196612}]
+2026-10-05 19:07:41,781 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'mode': 'on', 'node': 'chamber_light'}, {'mode': 'flashing', 'node': 'work_light'}, {'mode': 'on', 'node': 'chamber_light2'}]
+2026-10-05 19:07:41,781 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] MQTT mapping field: [2]
+2026-10-05 19:07:41,781 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: FINISH -> FINISH, file: /data/Metadata/plate_1.gcode, subtask: full-length-D-fit-gauge
+2026-10-05 19:07:42,998 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Found xcam inside print data: {'allow_skip_parts': False, 'buildplate_marker_detector': True, 'cfg': 1797271, 'first_layer_inspector': True, 'halt_print_sensitivity': 'medium', 'print_halt': True, 'printing_monitor': True, 'spaghetti_detector': True}
+2026-10-05 19:07:42,999 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Parsing xcam data - all fields: ['allow_skip_parts', 'buildplate_marker_detector', 'cfg', 'first_layer_inspector', 'halt_print_sensitivity', 'print_halt', 'printing_monitor', 'spaghetti_detector']
+2026-10-05 19:07:42,999 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] xcam cfg bitmask: 1797271 (binary: 0b110110110110010010111)
+2026-10-05 19:07:42,999 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: FINISH, gcode_file: /data/Metadata/plate_1.gcode, subtask_name: full-length-D-fit-gauge
+2026-10-05 19:07:42,999 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-10-05 19:07:42,999 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-10-05 19:07:42,999 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: [{'attr': 50343424, 'code': 196609}, {'attr': 83952640, 'code': 196610}, {'attr': 83952640, 'code': 196612}]
+2026-10-05 19:07:42,999 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'mode': 'on', 'node': 'chamber_light'}, {'mode': 'flashing', 'node': 'work_light'}, {'mode': 'on', 'node': 'chamber_light2'}]
+2026-10-05 19:07:43,000 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] MQTT mapping field: [2]
+2026-10-05 19:07:43,000 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: FINISH -> FINISH, file: /data/Metadata/plate_1.gcode, subtask: full-length-D-fit-gauge
+2026-10-05 19:07:44,339 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Found xcam inside print data: {'allow_skip_parts': False, 'buildplate_marker_detector': True, 'cfg': 1797271, 'first_layer_inspector': True, 'halt_print_sensitivity': 'medium', 'print_halt': True, 'printing_monitor': True, 'spaghetti_detector': True}
+2026-10-05 19:07:44,339 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Parsing xcam data - all fields: ['allow_skip_parts', 'buildplate_marker_detector', 'cfg', 'first_layer_inspector', 'halt_print_sensitivity', 'print_halt', 'printing_monitor', 'spaghetti_detector']
+2026-10-05 19:07:44,340 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] xcam cfg bitmask: 1797271 (binary: 0b110110110110010010111)
+2026-10-05 19:07:44,340 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: FINISH, gcode_file: /data/Metadata/plate_1.gcode, subtask_name: full-length-D-fit-gauge
+2026-10-05 19:07:44,340 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-10-05 19:07:44,340 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-10-05 19:07:44,340 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: [{'attr': 50343424, 'code': 196609}, {'attr': 83952640, 'code': 196610}, {'attr': 83952640, 'code': 196612}]
+2026-10-05 19:07:44,341 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'mode': 'on', 'node': 'chamber_light'}, {'mode': 'flashing', 'node': 'work_light'}, {'mode': 'on', 'node': 'chamber_light2'}]
+2026-10-05 19:07:44,341 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] MQTT mapping field: [2]
+2026-10-05 19:07:44,341 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: FINISH -> FINISH, file: /data/Metadata/plate_1.gcode, subtask: full-length-D-fit-gauge
+2026-10-05 19:07:45,019 INFO [uvicorn.access] [-] [IP]:0 - "POST /api/v1/library/files/1/slice HTTP/1.1" 202
+2026-10-05 19:07:45,033 INFO [backend.app.services.slicer_api] [446ef785] Slicing full-length-D-fit-gauge.stl (0.0 MB) plate=all with 3 profile(s)
+2026-10-05 19:07:46,193 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Found xcam inside print data: {'allow_skip_parts': False, 'buildplate_marker_detector': True, 'cfg': 1797271, 'first_layer_inspector': True, 'halt_print_sensitivity': 'medium', 'print_halt': True, 'printing_monitor': True, 'spaghetti_detector': True}
+2026-10-05 19:07:46,193 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Parsing xcam data - all fields: ['allow_skip_parts', 'buildplate_marker_detector', 'cfg', 'first_layer_inspector', 'halt_print_sensitivity', 'print_halt', 'printing_monitor', 'spaghetti_detector']
+2026-10-05 19:07:46,193 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] xcam cfg bitmask: 1797271 (binary: 0b110110110110010010111)
+2026-10-05 19:07:46,194 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: FINISH, gcode_file: /data/Metadata/plate_1.gcode, subtask_name: full-length-D-fit-gauge
+2026-10-05 19:07:46,194 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-10-05 19:07:46,195 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-10-05 19:07:46,195 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: [{'attr': 50343424, 'code': 196609}, {'attr': 83952640, 'code': 196610}, {'attr': 83952640, 'code': 196612}]
+2026-10-05 19:07:46,197 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'mode': 'on', 'node': 'chamber_light'}, {'mode': 'flashing', 'node': 'work_light'}, {'mode': 'on', 'node': 'chamber_light2'}]
+2026-10-05 19:07:46,197 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] MQTT mapping field: [2]
+2026-10-05 19:07:46,197 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: FINISH -> FINISH, file: /data/Metadata/plate_1.gcode, subtask: full-length-D-fit-gauge
+2026-10-05 19:07:47,021 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Found xcam inside print data: {'allow_skip_parts': False, 'buildplate_marker_detector': True, 'cfg': 1797271, 'first_layer_inspector': True, 'halt_print_sensitivity': 'medium', 'print_halt': True, 'printing_monitor': True, 'spaghetti_detector': True}
+2026-10-05 19:07:47,021 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Parsing xcam data - all fields: ['allow_skip_parts', 'buildplate_marker_detector', 'cfg', 'first_layer_inspector', 'halt_print_sensitivity', 'print_halt', 'printing_monitor', 'spaghetti_detector']
+2026-10-05 19:07:47,021 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] xcam cfg bitmask: 1797271 (binary: 0b110110110110010010111)
+2026-10-05 19:07:47,021 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: FINISH, gcode_file: /data/Metadata/plate_1.gcode, subtask_name: full-length-D-fit-gauge
+2026-10-05 19:07:47,022 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-10-05 19:07:47,022 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-10-05 19:07:47,022 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: [{'attr': 50343424, 'code': 196609}, {'attr': 83952640, 'code': 196610}, {'attr': 83952640, 'code': 196612}]
+2026-10-05 19:07:47,022 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'mode': 'on', 'node': 'chamber_light'}, {'mode': 'flashing', 'node': 'work_light'}, {'mode': 'on', 'node': 'chamber_light2'}]
+2026-10-05 19:07:47,023 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] MQTT mapping field: [2]
+2026-10-05 19:07:47,023 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: FINISH -> FINISH, file: /data/Metadata/plate_1.gcode, subtask: full-length-D-fit-gauge
+2026-10-05 19:07:48,477 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Found xcam inside print data: {'allow_skip_parts': False, 'buildplate_marker_detector': True, 'cfg': 1797271, 'first_layer_inspector': True, 'halt_print_sensitivity': 'medium', 'print_halt': True, 'printing_monitor': True, 'spaghetti_detector': True}
+2026-10-05 19:07:48,478 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Parsing xcam data - all fields: ['allow_skip_parts', 'buildplate_marker_detector', 'cfg', 'first_layer_inspector', 'halt_print_sensitivity', 'print_halt', 'printing_monitor', 'spaghetti_detector']
+2026-10-05 19:07:48,478 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] xcam cfg bitmask: 1797271 (binary: 0b110110110110010010111)
+2026-10-05 19:07:48,478 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: FINISH, gcode_file: /data/Metadata/plate_1.gcode, subtask_name: full-length-D-fit-gauge
+2026-10-05 19:07:48,478 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-10-05 19:07:48,478 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-10-05 19:07:48,478 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: [{'attr': 50343424, 'code': 196609}, {'attr': 83952640, 'code': 196610}, {'attr': 83952640, 'code': 196612}]
+2026-10-05 19:07:48,479 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'mode': 'on', 'node': 'chamber_light'}, {'mode': 'flashing', 'node': 'work_light'}, {'mode': 'on', 'node': 'chamber_light2'}]
+2026-10-05 19:07:48,479 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] MQTT mapping field: [2]
+2026-10-05 19:07:48,479 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: FINISH -> FINISH, file: /data/Metadata/plate_1.gcode, subtask: full-length-D-fit-gauge
+2026-10-05 19:07:49,963 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Found xcam inside print data: {'allow_skip_parts': False, 'buildplate_marker_detector': True, 'cfg': 1797271, 'first_layer_inspector': True, 'halt_print_sensitivity': 'medium', 'print_halt': True, 'printing_monitor': True, 'spaghetti_detector': True}
+2026-10-05 19:07:49,964 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Parsing xcam data - all fields: ['allow_skip_parts', 'buildplate_marker_detector', 'cfg', 'first_layer_inspector', 'halt_print_sensitivity', 'print_halt', 'printing_monitor', 'spaghetti_detector']
+2026-10-05 19:07:49,964 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] xcam cfg bitmask: 1797271 (binary: 0b110110110110010010111)
+2026-10-05 19:07:49,964 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: FINISH, gcode_file: /data/Metadata/plate_1.gcode, subtask_name: full-length-D-fit-gauge
+2026-10-05 19:07:49,964 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-10-05 19:07:49,964 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-10-05 19:07:49,964 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: [{'attr': 50343424, 'code': 196609}, {'attr': 83952640, 'code': 196610}, {'attr': 83952640, 'code': 196612}]
+2026-10-05 19:07:49,965 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'mode': 'on', 'node': 'chamber_light'}, {'mode': 'flashing', 'node': 'work_light'}, {'mode': 'on', 'node': 'chamber_light2'}]
+2026-10-05 19:07:49,965 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] MQTT mapping field: [2]
+2026-10-05 19:07:49,965 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: FINISH -> FINISH, file: /data/Metadata/plate_1.gcode, subtask: full-length-D-fit-gauge
