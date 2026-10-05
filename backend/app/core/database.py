@@ -5247,6 +5247,15 @@ async def run_migrations(conn):
             text("UPDATE printers SET camera_light_auto = :off WHERE camera_light_auto IS NULL"), {"off": False}
         )
 
+    # Migration: per-printer opt-out of the post-print SD card cleanup. Off by
+    # default, so no printer's behaviour changes on upgrade. Same backfill as
+    # above for a table create_all() already gave the column.
+    await _safe_execute(conn, "ALTER TABLE printers ADD COLUMN keep_file_on_sd BOOLEAN DEFAULT FALSE")
+    async with conn.begin_nested():
+        await conn.execute(
+            text("UPDATE printers SET keep_file_on_sd = :off WHERE keep_file_on_sd IS NULL"), {"off": False}
+        )
+
     # Migration: printer-scoped groups (#1727). Defaults off, so no existing
     # group narrows anyone's printers on upgrade; the group_printers table
     # itself comes from create_all(). The backfill covers a table create_all()

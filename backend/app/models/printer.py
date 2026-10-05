@@ -52,6 +52,10 @@ class Printer(Base):
     # Queue: True after a print finishes/fails, until user acknowledges the plate is cleared.
     # Persisted so the gate survives crashes and power cycles (issue #961).
     awaiting_plate_clear: Mapped[bool] = mapped_column(Boolean, default=False)
+    # Leave the uploaded job file on the printer's SD card after a print
+    # finishes, so the print can be restarted from the printer's own screen.
+    # Off by default: the post-print cleanup stays as it was (#374, #1542).
+    keep_file_on_sd: Mapped[bool] = mapped_column(Boolean, default=False)
     created_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now())
     updated_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now(), onupdate=func.now())
 

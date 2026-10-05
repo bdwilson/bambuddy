@@ -448,6 +448,7 @@ export interface Printer {
   supports_nozzle_flow_type: boolean;
   is_active: boolean;
   auto_archive: boolean;
+  keep_file_on_sd: boolean;  // leave the job file on the SD card after a print (#3009)
   external_camera_url: string | null;
   external_camera_type: string | null;  // "mjpeg", "rtsp", "snapshot"
   external_camera_enabled: boolean;
@@ -752,6 +753,7 @@ export interface PrinterCreate {
   model?: string;
   location?: string | null;
   auto_archive?: boolean;
+  keep_file_on_sd?: boolean;
   // Maintenance Mode flag (#1476). Backend already gates MQTT, queue dispatch,
   // scheduler, metrics and the print picker on this; toggling via PATCH
   // /printers/{id} disconnects or reconnects MQTT accordingly.
