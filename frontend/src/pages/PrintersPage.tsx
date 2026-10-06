@@ -8451,6 +8451,7 @@ function EditPrinterModal({
     model: printer.model || '',
     location: printer.location || '',
     auto_archive: printer.auto_archive,
+    keep_file_on_sd: printer.keep_file_on_sd ?? false,
     is_active: printer.is_active,
   });
 
@@ -8458,6 +8459,9 @@ function EditPrinterModal({
   // edit that breaks connectivity (e.g. a mistyped IP) is caught before save.
   const [checkingSave, setCheckingSave] = useState(false);
   const [saveWarning, setSaveWarning] = useState<PrinterDiagnosticResult | null>(null);
+  // Turning on keep_file_on_sd needs an explicit OK (#3009): the file left on
+  // the card can make some printers start the last job again after a power cycle.
+  const [confirmKeepFile, setConfirmKeepFile] = useState(false);
 
   const updateMutation = useMutation({
     mutationFn: (data: Partial<PrinterCreate>) => api.updatePrinter(printer.id, data),
@@ -8485,6 +8489,7 @@ function EditPrinterModal({
       model: form.model || undefined,
       location: form.location || undefined,
       auto_archive: form.auto_archive,
+      keep_file_on_sd: form.keep_file_on_sd,
       is_active: form.is_active,
     };
     // Only include access_code if it was changed
@@ -8626,6 +8631,24 @@ function EditPrinterModal({
                 {t('printers.modal.autoArchiveLabel')}
               </label>
             </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  id="edit_keep_file_on_sd"
+                  checked={form.keep_file_on_sd}
+                  onChange={(e) => {
+                    if (e.target.checked) setConfirmKeepFile(true);
+                    else setForm({ ...form, keep_file_on_sd: false });
+                  }}
+                  className="rounded border-bambu-dark-tertiary bg-bambu-dark text-bambu-green focus:ring-bambu-green"
+                />
+                <label htmlFor="edit_keep_file_on_sd" className="text-sm text-bambu-gray">
+                  {t('printers.modal.keepFileOnSdLabel')}
+                </label>
+              </div>
+              <p className="text-xs text-bambu-gray/70 mt-1 ml-6">{t('printers.modal.keepFileOnSdHelp')}</p>
+            </div>
             {/* Maintenance Mode toggle (#1476) — checkbox is the inverse of
                 is_active because the user-facing concept is "is this printer
                 in maintenance" not "is it active". */}
@@ -8692,6 +8715,21 @@ function EditPrinterModal({
               </div>
             )}
           </form>
+          {confirmKeepFile && (
+            <ConfirmModal
+              title={t('printers.modal.keepFileOnSdWarnTitle')}
+              message={t('printers.modal.keepFileOnSdWarnMessage')}
+              confirmText={t('printers.modal.keepFileOnSdWarnConfirm')}
+              cancelText={t('printers.modal.keepFileOnSdWarnCancel')}
+              variant="warning"
+              overlayZIndex="z-[110]"
+              onConfirm={() => {
+                setForm({ ...form, keep_file_on_sd: true });
+                setConfirmKeepFile(false);
+              }}
+              onCancel={() => setConfirmKeepFile(false)}
+            />
+          )}
         </CardContent>
       </Card>
     </div>

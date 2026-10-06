@@ -3514,6 +3514,16 @@ async def run_migrations(conn):
     # Migration: Add awaiting_plate_clear column to printers (#961)
     await _safe_execute(conn, "ALTER TABLE printers ADD COLUMN awaiting_plate_clear BOOLEAN DEFAULT FALSE NOT NULL")
 
+    # Migration: per-printer opt-out of the post-print SD card cleanup. Off by
+    # default, so no printer's behaviour changes on upgrade. The backfill covers
+    # a table create_all() already gave the column (the ALTER is then swallowed
+    # and existing rows keep NULL).
+    await _safe_execute(conn, "ALTER TABLE printers ADD COLUMN keep_file_on_sd BOOLEAN DEFAULT FALSE")
+    async with conn.begin_nested():
+        await conn.execute(
+            text("UPDATE printers SET keep_file_on_sd = :off WHERE keep_file_on_sd IS NULL"), {"off": False}
+        )
+
     # Migration: Add REST/Webhook smart plug fields
     await _safe_execute(conn, "ALTER TABLE smart_plugs ADD COLUMN rest_on_url VARCHAR(500)")
     await _safe_execute(conn, "ALTER TABLE smart_plugs ADD COLUMN rest_on_body TEXT")
