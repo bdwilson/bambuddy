@@ -7178,7 +7178,13 @@ async def on_print_complete(printer_id: int, data: dict):
                     archive_row = await db.execute(select(PrintArchive.filename).where(PrintArchive.id == archive_id))
                     archive_filename = archive_row.scalar_one_or_none()
 
-            if printer:
+            if printer and printer.keep_file_on_sd:
+                # Opt-out (#3009): the file stays so the print can be restarted
+                # from the printer's own screen. Only this post-print sweep is
+                # skipped; the pre-upload delete and the failed-start cleanup
+                # in the scheduler still run.
+                logger.info("Keeping uploaded job file on printer %s SD card (keep_file_on_sd)", printer.name)
+            elif printer:
                 from backend.app.services.bambu_ftp import DeleteResult, delete_file_async
                 from backend.app.utils.filename import derive_remote_filename
 

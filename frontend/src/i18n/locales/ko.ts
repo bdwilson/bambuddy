@@ -547,6 +547,12 @@ export default {
       locationGroup: '위치 / 그룹 (선택사항)',
       locationPlaceholder: '예: 작업실, 사무실, 지하실',
       autoArchiveLabel: '완료된 인쇄 자동 아카이브',
+      keepFileOnSdLabel: '인쇄 후에도 작업 파일을 SD 카드에 유지',
+      keepFileOnSdHelp: '프린터 화면에서 바로 다시 인쇄할 수 있습니다. 일부 P1S/A1 펌웨어는 전원을 껐다 켜면 마지막 작업을 스스로 다시 시작합니다. 그런 경우 이 옵션을 끄세요.',
+      keepFileOnSdWarnTitle: "작업 파일을 SD 카드에 유지할까요?",
+      keepFileOnSdWarnMessage: "파일을 SD 카드에 남겨두면 다음 위험이 있습니다:\n\n• 일부 프린터(P1S, A1 펌웨어에서 보고됨)는 전원을 껐다 켜면 마지막 작업을 스스로 다시 시작하여, 아무도 지켜보지 않는 상태에서 예기치 않은 출력이 일어날 수 있습니다. 출력이 끝날 때마다 스마트 플러그로 프린터 전원을 끄는 경우 특히 가능성이 높습니다.\n• 삭제하기 전까지 SD 카드에 파일이 계속 쌓입니다.\n\n이를 이해하고 감수하는 경우에만 켜세요.",
+      keepFileOnSdWarnConfirm: "파일 유지",
+      keepFileOnSdWarnCancel: "취소",
       fromPrinterSettings: '프린터 설정에서',
       modelOptional: '모델 (선택사항)',
       saveChanges: '변경사항 저장'
